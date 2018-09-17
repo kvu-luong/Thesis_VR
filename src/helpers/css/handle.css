@@ -1,0 +1,137 @@
+.btn{
+    position:relative;
+    display:block;
+    padding-top: 14px;
+    color:white;
+}
+#b1{
+    z-index: 1;
+    position: absolute;
+    width: 61px;
+    height: 32px;
+    margin-left:30px;
+color:white;
+   }
+#b-minus{
+    z-index: 1;
+    position: absolute;
+    margin-left:100px;
+    color:white;
+}
+#b-plus{
+    z-index: 1;
+    position: absolute;
+    margin-left:150px;
+    color:white;
+}
+#b-left{
+    z-index: 1;
+    position: absolute;
+    margin-left:200px;
+    color:white;
+}
+
+#b-up{
+    z-index: 1;
+    position: absolute;
+    margin-left:250px;
+    color:white;
+}
+#b-down{
+    z-index: 1;
+    position: absolute;
+    margin-left:300px;
+    color:white;
+}
+#b-right{
+    z-index: 1;
+    position: absolute;
+    margin-left:350px;
+    color:white;
+}
+#b-full{
+    z-index: 1;
+    position: absolute;
+    margin-left:400px;
+    color:white;
+}
+#b-initial{
+    z-index:1;
+    position:absolute;
+    margin-left:450px;
+    color:white;
+}
+#done1{
+    z-index:1;
+    position:absolute;
+    margin-left:500px;
+    color:white;
+}
+#done2{
+    z-index:1;
+    position:absolute;
+    margin-left:550px;
+    color:white;
+}
+#remove{
+    z-index:1;
+    position:absolute;
+    margin-left:600px;
+    color:white;
+}
+#music{
+    z-index:1;
+    position:absolute;
+    margin-left:650px;
+    color:white;
+}
+#music2{
+    z-index:0;
+    position:absolute;
+    margin-left:650px;
+    color:white;
+}
+#menu{
+    z-index:1;
+    position:absolute;
+    margin-left:700px;
+    color:white;
+}
+.thumbnails{
+    position:relative;
+}
+#myImgMap{
+    width:100%;
+    height:100%;
+}
+#thumbnail_image{
+    position:absolute;
+    z-index:1;
+    background: #0000001f;
+    width:50%;
+    display:block;
+    margin-top: 38px;
+    visibility: hidden;
+    left: 21%;
+    height:84px;
+    transform:translateY(-300px);
+    opacity:0;
+    transition:1s;
+}
+a-assets, a-scene audio, a-scene img, a-scene video{
+    display:unset;
+}
+#thumb-street,#thumb-corridor,#thumb-lounge,#thumb-parlor{
+    margin-left:9px;
+}
+#map{
+    position:relative;
+}
+button#lionA{
+    position:absolute;
+    transform:translate(318%, -649%);
+}
+button#deerA{
+    position:absolute;
+    transform:translate(427%, -681%);
+}
