@@ -61,17 +61,17 @@ color:white;
     margin-left:450px;
     color:white;
 }
-#done1{
+#done{
     z-index:1;
     position:absolute;
     margin-left:500px;
     color:white;
 }
-#done2{
+#add{
     z-index:1;
     position:absolute;
     margin-left:550px;
-    color:white;
+    color:red;
 }
 #remove{
     z-index:1;

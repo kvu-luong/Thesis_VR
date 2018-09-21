@@ -151,7 +151,7 @@ $(document).ready(function () {
     var Zin = 1;
     let de1check = deer1.getAttribute("checked");
     let de2check = deer2.getAttribute("checked");
-    console.log(de1check + "-" + de2check);
+
 
     window.addEventListener("keydown", function () {
         checkKeyPress();
@@ -379,9 +379,6 @@ $(document).ready(function () {
     }
     zoom(Zin);
     //end zoom
-
-//start to handle object
-    let deer3 = document.getElementById("deer3");
     //select object using keydown
     deer1.addEventListener('click', function () {
         deer1.setAttribute('checked', 'on');
@@ -394,13 +391,6 @@ $(document).ready(function () {
         console.log(deer2.getAttribute('checked'));
 
     }, false);
-//    deer3.addEventListener('click', function () {
-//        deer3.setAttribute('checked', 'on');
-//        deer1.setAttribute('checked', 'off');
-//        deer3.setAttribute('checked', 'off');
-//        console.log(deer3.getAttribute('checked'));
-//
-//    }, false);
     let x1 = 0;
     let y1 = 0;
 
@@ -470,10 +460,19 @@ $("#lionA").click(function(){
 $("#deerA").click(function(){
     console.log("change deer iamge");
     let background = document.getElementById("bg");//sky tag
-  background.setAttribute("src","img/zoo/deer.jpg");
-      de1.setAttribute("visible","false");
+    background.setAttribute("src","img/zoo/deer.jpg");
+    de1.setAttribute("visible","false");
     de2.setAttribute("visible", "false");
 });
+
+
+//Add new animal
+$("body").on("dblclick", function(){
+    alert("hello anh em double click");4
+});
+$("body").on("mousemove",function(){
+    console.log("anh em ta la mot gia dinh");
+})
 
 });
 
