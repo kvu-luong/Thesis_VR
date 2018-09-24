@@ -133,6 +133,11 @@
                camera="zoom: 1" look-controls rotation="0 90 0"  mouse-cursor>
      </a-entity>
 
+     <!-- display select file input -->
+<div class="display_select_file" style="z-index: 1; position: absolute;background-color: red;">
+        <button id="add_object">Hello anh em</button>
+        <input id="file-input" type="file" name="name" style="display: none;" />
+    </div>
  </a-scene>
  <script>
        var deer1 = document.querySelector("#deer1");
@@ -288,6 +293,7 @@
 <div id="myMap" class="modal fade" role="dialog">
 <div class="modal-dialog">
 
+
  <!-- Modal content-->
  <div class="modal-content">
    <div class="modal-header">
@@ -308,6 +314,8 @@
      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
    </div>
  </div>
+
+
 
 </div>
 </div>

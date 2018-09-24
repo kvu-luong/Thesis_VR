@@ -468,11 +468,12 @@ $("#deerA").click(function(){
 
 //Add new animal
 $("body").on("dblclick", function(){
-    alert("hello anh em double click");4
+
+        console.log("hello anh em I'm comeback");
 });
-$("body").on("mousemove",function(){
-    console.log("anh em ta la mot gia dinh");
-})
+// $("body").on("mousemove",function(){
+//     console.log("anh em ta la mot gia dinh");
+// })
 
 });
 

@@ -135,3 +135,12 @@ button#deerA{
     position:absolute;
     transform:translate(427%, -681%);
 }
+.display_select_file{
+    display: relative;
+}
+#add_object{
+    display: absolute;
+    color: white;
+    height: 100px;
+    width: 100px;
+}
