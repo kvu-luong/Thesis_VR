@@ -467,13 +467,65 @@ $("#deerA").click(function(){
 
 
 //Add new animal
-$("body").on("dblclick", function(){
+$("body").on("dblclick", function(el){
+    $("#file-input").trigger("click");
+        var xPosition = 0;
+        var yPosition = 0;
+        var link_object = "";
+        var object_material = "";
+        //after select file
+        $("#file-input").on('change',function(e){
+            var link_of_object = $("#file-input").val();
+            if(link_of_object != ""){//prevent empty input
+                console.log(link_of_object);
+                var files = e.target.files;
 
-        console.log("hello anh em I'm comeback");
+            for(var i=0; i<files.length; i++) {
+                var f = files[i];
+                
+                if(f.name.split(".")[1] === "obj"){
+                    link_object = f.name;
+                }else if(f.name.split(".")[1] === "mtl"){
+                    object_material = f.name;
+                }    
+            }
+
+            $("#file-input").val("");
+            }
+
+            xPosition = el.pageX;
+            yPosition = el.pageY;
+            if(xPosition != 0 && yPosition != 0){
+                add_Animal(link_object, object_material);
+            } 
+        });        
 });
-// $("body").on("mousemove",function(){
-//     console.log("anh em ta la mot gia dinh");
-// })
+
+function add_Animal(link_object, object_material) {
+    var s = document.querySelector("a-scene");
+    var animalContain = document.createElement("a-entity");
+    var animal = document.createElement("a-obj-model");
+    animalContain.setAttribute('position', {
+        x: -3,
+        y: -1,
+        z: -2.5
+    });
+
+    animal.setAttribute("src", link_object);
+    animal.setAttribute("mtl", object_material);
+    animal.setAttribute('position', {
+        x: 1,
+        y: 2,
+        z: 1
+    });
+    animal.setAttribute('scale', "0.1 0.1 0.1");
+    animal.setAttribute("id", "deer3");
+    animal.setAttribute("checked", "off");
+    animalContain.appendChild(animal);
+    s.appendChild(animalContain);
+}
+
+
 
 });
 

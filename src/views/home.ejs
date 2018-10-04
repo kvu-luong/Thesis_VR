@@ -257,43 +257,42 @@
             $("#music2").css("z-index", "0");
         }, false);
 
-        //add object
-        var addBtn = document.getElementById("add");
-        var s = document.querySelector("a-scene");
-        var link = "obj/deer1.obj";
-        var material = "obj/deer1.mtl";
-        addBtn.addEventListener("click", function () {//declare this way to prevent automatic running without click
-            AddAnimal(link, material);
-        }, false);
-        var animalContain = document.createElement("a-entity");
-        var animal = document.createElement("a-obj-model");
-        function AddAnimal(link, material) {
+        // //add object
+        // var addBtn = document.getElementById("add");
+        // var s = document.querySelector("a-scene");
+        // var link = "obj/deer1.obj";
+        // var material = "obj/deer1.mtl";
+        // addBtn.addEventListener("click", function () {//declare this way to prevent automatic running without click
+        //     AddAnimal(link, material);
+        // }, false);
+        // var animalContain = document.createElement("a-entity");
+        // var animal = document.createElement("a-obj-model");
+        // function AddAnimal(link, material) {
 
-            animalContain.setAttribute("position", {
-                x: -3,
-                y: -1,
-                z: -2.5
-            });
+        //     animalContain.setAttribute("position", {
+        //         x: -3,
+        //         y: -1,
+        //         z: -2.5
+        //     });
 
-            animal.setAttribute("src", link);
-            animal.setAttribute("mtl", material);
-            animal.setAttribute("position", {
-                x: 1,
-                y: -2,
-                z: 1
-            });
-            animal.setAttribute("scale", "0.1 0.1 0.1");
-            animal.setAttribute("id", "deer3");
-            animal.setAttribute("checked", "off");
-            animalContain.appendChild(animal);
-            s.appendChild(animalContain);
-        }
+        //     animal.setAttribute("src", link);
+        //     animal.setAttribute("mtl", material);
+        //     animal.setAttribute("position", {
+        //         x: 1,
+        //         y: -2,
+        //         z: 1
+        //     });
+        //     animal.setAttribute("scale", "0.1 0.1 0.1");
+        //     animal.setAttribute("id", "deer3");
+        //     animal.setAttribute("checked", "off");
+        //     animalContain.appendChild(animal);
+        //     s.appendChild(animalContain);
+        // }
 
     </script>
     <!-- Modal map -->
     <div id="myMap" class="modal fade" role="dialog">
         <div class="modal-dialog">
-
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
@@ -306,9 +305,6 @@
                         <button class="btn-info" id="lionA">lion</button>
                         <button class="btn-info" id="deerA">deer</button>
                     </div>
-
-
-
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -317,9 +313,15 @@
 
         </div>
     </div>
-</body>
+    <!-- display select file input -->
+    <div class="display_select_file">
+        <button id="add_object">Hello anh em</button>
+        <input id="file-input" type="file" name="name" style="display: none;" multiple />
+    </div>
 
+
+</body>
 </html>
 <% if (isDev) { %>
-    <script src="reload/reload.js"></script>
+    <script src="reload/reload.js" ></script>
 <% } %>

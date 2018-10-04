@@ -79,6 +79,14 @@ color:white;
     margin-left:600px;
     color:white;
 }
+.display_select_file{
+    z-index:1;
+}
+#add_object{
+    z-index:999;
+    position:absolute;
+    background-color: red;
+}
 #music{
     z-index:1;
     position:absolute;
