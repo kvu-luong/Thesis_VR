@@ -153,8 +153,8 @@ $(document).ready(function () {
     let de2check = deer2.getAttribute("checked");
 
 
-    window.addEventListener("keydown", function () {
-        checkKeyPress();
+    window.addEventListener("keydown", function (event) {
+        checkKeyPress(event);
         if (de1check == "on") {
             console.log(de1check + "in if deer1");
             window.addEventListener("keydown", function () {
@@ -169,7 +169,7 @@ $(document).ready(function () {
 
         console.log("check KeyPress at move right and move left");
     }, false);//keydown: press and hold//keyup: press don't hold//
-    function checkKeyPress() {
+    function checkKeyPress(event) {
         var key = event.keyCode;
         if (key == "37" || key == "65") {//left
             console.log("The'left' key ");
@@ -394,14 +394,14 @@ $(document).ready(function () {
     let x1 = 0;
     let y1 = 0;
 
-    window.addEventListener("keydown", function () {
+    window.addEventListener("keydown", function (event) {
         if (deer1.getAttribute("checked") === "on") {
-            HandleRotate(deer1);
+            HandleRotate(event, deer1);
         } else if (deer2.getAttribute("checked") === "on") {
-            HandleRotate(deer2);
+            HandleRotate(event, deer2);
         }
     }, false);
-    function HandleRotate(myObjectHanle) {
+    function HandleRotate(event, myObjectHanle) {
         let key1 = event.keyCode;
         if (key1 == "75" && myObjectHanle.getAttribute("checked") === "on") {//k down
             y1 = y1 - 0.1;
@@ -468,12 +468,21 @@ $("#deerA").click(function(){
 
 //Add new animal
 $("body").on("dblclick", function(){
-
-        console.log("hello anh em I'm comeback");
+    $(".add_object_input").trigger("click");
+    $(".add_object_input").on("change", function(){
+        let file_link = $(".add_object_input").val();
+        console.log(file_link);
+    });
 });
-// $("body").on("mousemove",function(){
-//     console.log("anh em ta la mot gia dinh");
-// })
 
+var planeZ = new THREE.Plane(new THREE.Vector3(0, 0, 1), 0);
+var mv = new THREE.Vector3(
+    (event.clientX / window.innerWidth) * 2 - 1,
+    -(event.clientY / window.innerHeight) * 2 + 1,
+    0.5 );
+var raycaster = projector.pickingRay(mv, camera);
+var pos = raycaster.ray.intersectPlane(planeZ);
+console.log("x: " + pos.x + ", y: " + pos.y);
+console.log("babe");
 });
 

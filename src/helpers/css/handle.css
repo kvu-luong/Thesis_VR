@@ -129,7 +129,6 @@ a-assets, a-scene audio, a-scene img, a-scene video{
 }
 button#lionA{
     position:absolute;
-    transform:translate(318%, -649%);
 }
 button#deerA{
     position:absolute;
