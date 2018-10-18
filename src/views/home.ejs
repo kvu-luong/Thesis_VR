@@ -10,14 +10,21 @@
     <link href="/css/font-awesome.css" rel="stylesheet" type="text/css" />
     <link href="/css/handle.css" rel="stylesheet" type="text/css" />
     <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <script src="/js/aframe.min_1.js" type="text/javascript"></script>
+    <!-- <script src="/js/aframe.min_1.js" type="text/javascript"></script> -->
+    <script src="https://aframe.io/releases/0.4.0/aframe.min.js"></script>
+ 
+    <script src="/js/drap_drop.js"></script> 
+    <script>
+      registerAframeClickDragComponent(window.AFRAME);
+    </script> 
     <script src="/js/animal-component.js"></script>
     <script src="/js/aframe-mouse-cursor-component.min.js" type="text/javascript"></script>
+
    
 </head>
 
-<body>
-    <a-scene inspector="url: https://aframe.io/releases/0.3.0/aframe-inspector.min.js">
+<body cursor-listener>
+    <a-scene  inspector="url: https://aframe.io/releases/0.3.0/aframe-inspector.min.js">
 
         <!--start code button -->
         <div class="container">
@@ -116,14 +123,14 @@
             <a-mouseleave opacity="0.5"></a-mouseleave>
         </a-image>
 
-        <a-entity position="-1 -1 -2.5">
-            <a-obj-model checked="off" visible="false" id="deer2" src="#deer22" mtl="#deer22-material" scale="0.1 0.1 0.1" rotation=" 0 -28 0">
+        <a-entity click-drag position="-1 -1 -2.5">
+            <a-obj-model  checked="off" visible="false" id="deer2" src="#deer22" mtl="#deer22-material" scale="0.1 0.1 0.1" rotation=" 0 -28 0">
             </a-obj-model>
         </a-entity>
 
 
-        <a-entity position="-2 -1 -1">
-            <a-obj-model checked="off" visible="false" id="deer1" src="#deer11" mtl="#deer11-material" scale="0.1 0.1 0.1" rotation=" 0 -40 0">
+        <a-entity click-drag position="-2 -1 -1">
+            <a-obj-model  checked="off" visible="false" id="deer1" src="#deer11" mtl="#deer11-material" scale="0.1 0.1 0.1" rotation=" 0 -40 0">
                 <a-animation attribute="scale" begin="mouseenter" to="0.2 0.2 0.2"></a-animation>
                 <a-animation attribute="scale" begin="mouseleave" to="0.1 0.1 0.1"></a-animation>
                 <a-animation attribute="rotation" begin="click" to=" 0 360 0" dur="1000" direction="alternate-reverse"></a-animation>
@@ -132,7 +139,7 @@
 
 
         <!--camera-->
-        <a-entity id="camera" position="0 0 0" camera="zoom: 1" look-controls rotation="0 90 0" mouse-cursor>
+        <a-entity id="camera" position="0 0 0" camera="zoom: 1" look-controls-enabled="false" rotation="0 90 0" mouse-cursor>
         </a-entity>
 
         <a-entity  clock="font: sourcecodepro; color: #4149f4; position: -1 1.5 -.75"></a-entity>

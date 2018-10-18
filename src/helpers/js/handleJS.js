@@ -1,4 +1,55 @@
+
 $(document).ready(function () {
+
+    function cover_position(x,y){
+        let screen_width = screen.width;
+        let screen_height = screen.height;
+        let new_x = (x + screen_width / 2) / screen_width;
+        let new_y = (y + screen_height / 2) / screen_height;
+        return {new_x, new_y};
+    }
+    function clientCoordsTo3DCanvasCoords(clientX, clientY, offsetX, offsetY, clientWidth, clientHeight) {
+        return {
+          x: (clientX - offsetX) / clientWidth * 2 - 1,
+          y: -((clientY - offsetY) / clientHeight) * 2 + 1
+        };
+      }
+    $("body").on("dblclick",function(event){
+        $(".add_object_input").trigger("click");
+        $(".add_object_input").on("change", function(){
+            let link_of_object = $(".add_object_input").val();
+            console.log(link_of_object);
+        });
+        let scale_position = cover_position(event.clientX, event.clientY);
+        console.log(scale_position);
+        AddAnimal($(".add_object_input").val(),"",scale_position.new_x, scale_position.new_y);
+    });
+     
+    function AddAnimal(link, material, positionX, positionY) {
+       var s = document.querySelector("a-scene");
+       var animalContain = document.createElement("a-entity");
+       var animal = document.createElement("a-obj-model");
+           animalContain.setAttribute("position", {
+               x: -3,
+               y: -1,
+               z: -2.5
+           });
+
+           animal.setAttribute("src", link);
+           animal.setAttribute("mtl", material);
+           animal.setAttribute("position", {
+               x: positionX,
+               y: positionY,
+               z: 1
+           });
+           animal.setAttribute("scale", "0.1 0.1 0.1");
+           animal.setAttribute("id", "deer3");
+           animal.setAttribute("checked", "off");
+           animalContain.appendChild(animal);
+           s.appendChild(animalContain);
+       }
+
+
 //show sidebar
     var menu_thumbnail = document.getElementById("thumbnail_image");
     var menuBtn = document.getElementById("b1");
@@ -467,22 +518,22 @@ $("#deerA").click(function(){
 
 
 //Add new animal
-$("body").on("dblclick", function(){
-    $(".add_object_input").trigger("click");
-    $(".add_object_input").on("change", function(){
-        let file_link = $(".add_object_input").val();
-        console.log(file_link);
-    });
-});
+// $("body").on("dblclick", function(){
+//     $(".add_object_input").trigger("click");
+//     $(".add_object_input").on("change", function(){
+//         let file_link = $(".add_object_input").val();
+//         console.log(file_link);
+//     });
+// });
 
-var planeZ = new THREE.Plane(new THREE.Vector3(0, 0, 1), 0);
-var mv = new THREE.Vector3(
-    (event.clientX / window.innerWidth) * 2 - 1,
-    -(event.clientY / window.innerHeight) * 2 + 1,
-    0.5 );
-var raycaster = projector.pickingRay(mv, camera);
-var pos = raycaster.ray.intersectPlane(planeZ);
-console.log("x: " + pos.x + ", y: " + pos.y);
-console.log("babe");
+// var planeZ = new THREE.Plane(new THREE.Vector3(0, 0, 1), 0);
+// var mv = new THREE.Vector3(
+//     (event.clientX / window.innerWidth) * 2 - 1,
+//     -(event.clientY / window.innerHeight) * 2 + 1,
+//     0.5 );
+// var raycaster = projector.pickingRay(mv, camera);
+// var pos = raycaster.ray.intersectPlane(planeZ);
+// console.log("x: " + pos.x + ", y: " + pos.y);
+// console.log("babe");
 });
 
