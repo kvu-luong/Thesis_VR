@@ -153,8 +153,8 @@ $(document).ready(function () {
     let de2check = deer2.getAttribute("checked");
 
 
-    window.addEventListener("keydown", function () {
-        checkKeyPress();
+    window.addEventListener("keydown", function (event) {
+        checkKeyPress(event);
         if (de1check == "on") {
             console.log(de1check + "in if deer1");
             window.addEventListener("keydown", function () {
@@ -169,7 +169,7 @@ $(document).ready(function () {
 
         console.log("check KeyPress at move right and move left");
     }, false);//keydown: press and hold//keyup: press don't hold//
-    function checkKeyPress() {
+    function checkKeyPress(event) {
         var key = event.keyCode;
         if (key == "37" || key == "65") {//left
             console.log("The'left' key ");
@@ -495,6 +495,8 @@ $("body").on("dblclick", function(el){
 
             xPosition = el.pageX;
             yPosition = el.pageY;
+            console.log(xPosition +"-"+ yPosition);
+           
             if(xPosition != 0 && yPosition != 0){
                 add_Animal(link_object, object_material);
             } 
@@ -511,15 +513,16 @@ function add_Animal(link_object, object_material) {
         z: -2.5
     });
 
-    animal.setAttribute("src", link_object);
-    animal.setAttribute("mtl", object_material);
+    animal.setAttribute("src", "obj/"+link_object);
+    animal.setAttribute("mtl", "obj/"+object_material);
     animal.setAttribute('position', {
-        x: 1,
-        y: 2,
+        x: 2,
+        y: -2,
         z: 1
     });
     animal.setAttribute('scale', "0.1 0.1 0.1");
-    animal.setAttribute("id", "deer3");
+    var id = Date.now();
+    animal.setAttribute("id", "object"+id);
     animal.setAttribute("checked", "off");
     animalContain.appendChild(animal);
     s.appendChild(animalContain);
