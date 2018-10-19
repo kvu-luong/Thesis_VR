@@ -19,6 +19,10 @@ app.set("views","./src/views");
 app.get("/", (req, res)=>{
     res.render('home');
 });
+
+app.get("/intro", (req, res)=>{
+    res.render('intro');
+});
 //4. export
 module.exports = { app };
 

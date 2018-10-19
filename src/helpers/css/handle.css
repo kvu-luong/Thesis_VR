@@ -127,13 +127,28 @@ a-assets, a-scene audio, a-scene img, a-scene video{
 #map{
     position:relative;
 }
-button#lionA{
+button#lionA,
+button#deerA
+{
     position:absolute;
-    transform:translate(318%, -649%);
+    color: transparent;
+    background-color: transparent;
+    border-color: transparent;
+    border-radius: 20px;
+}
+button#lionA{
+    transform: translate(428px, -197px);
+}
+button#lionA:hover,
+button#deerA:hover
+{
+    color: black;
+    background-color: white;
+    border-color: green;
+    border-radius: 20px;
 }
 button#deerA{
-    position:absolute;
-    transform:translate(427%, -681%);
+    transform: translate(197px, -284px);
 }
 .display_select_file{
     display: relative;

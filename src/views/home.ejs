@@ -2,26 +2,33 @@
 <html>
 
 <head>
-    <title>Make button with A-Frame</title>
+    <title>Exploring A-Frame</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/img/background/icon.svg" />
     <meta charset="UTF-8">
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
 
     <link href="/css/font-awesome.css" rel="stylesheet" type="text/css" />
     <link href="/css/handle.css" rel="stylesheet" type="text/css" />
     <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <script src="/js/jquery-3.3.1.min.js" type="text/javascript"></script>
-    <script src="/js/aframe.min_1.js" type="text/javascript"></script>
-    <!--      <script src="js/aframe.min.js" type="text/javascript"></script>-->
-    <!--           <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>-->
-    <!--                <script src="js/3dio.min.js" type="text/javascript"></script>-->
-    <script src="/js/handleJS.js" type="text/javascript"></script>
-    <script src="/js/bootstrap.js" type="text/javascript"></script>
+    <!-- <script src="/js/aframe.min_1.js" type="text/javascript"></script> -->
+    <script src="https://aframe.io/releases/0.4.0/aframe.min.js"></script>
+    <script>
+        // TypeScript 2.2 requires 'exports' global variable.
+        var exports = {};
+    </script>
+    <script src="/js/require.js"></script> 
+    <script src="/js/drap_drop.js"></script> 
+    <script>
+        window.aframeDraggableComponent(window.AFRAME)
+    </script> 
+    <script src="/js/animal-component.js"></script>
     <script src="/js/aframe-mouse-cursor-component.min.js" type="text/javascript"></script>
 
+   
 </head>
 
-<body>
-    <a-scene>
+<body cursor-listener>
+    <a-scene  inspector="url: https://aframe.io/releases/0.3.0/aframe-inspector.min.js">
 
         <!--start code button -->
         <div class="container">
@@ -120,14 +127,14 @@
             <a-mouseleave opacity="0.5"></a-mouseleave>
         </a-image>
 
-        <a-entity position="-1 -1 -2.5">
-            <a-obj-model checked="off" visible="false" id="deer2" src="#deer22" mtl="#deer22-material" scale="0.1 0.1 0.1" rotation=" 0 -28 0">
+        <a-entity click-drag position="-1 -1 -2.5">
+            <a-obj-model  checked="off" visible="false" id="deer2" src="#deer22" mtl="#deer22-material" scale="0.1 0.1 0.1" rotation=" 0 -28 0">
             </a-obj-model>
         </a-entity>
 
 
-        <a-entity position="-2 -1 -1">
-            <a-obj-model checked="off" visible="false" id="deer1" src="#deer11" mtl="#deer11-material" scale="0.1 0.1 0.1" rotation=" 0 -40 0">
+        <a-entity click-drag position="-2 -1 -1">
+            <a-obj-model  checked="off" visible="false" id="deer1" src="#deer11" mtl="#deer11-material" scale="0.1 0.1 0.1" rotation=" 0 -40 0">
                 <a-animation attribute="scale" begin="mouseenter" to="0.2 0.2 0.2"></a-animation>
                 <a-animation attribute="scale" begin="mouseleave" to="0.1 0.1 0.1"></a-animation>
                 <a-animation attribute="rotation" begin="click" to=" 0 360 0" dur="1000" direction="alternate-reverse"></a-animation>
@@ -136,11 +143,15 @@
 
 
         <!--camera-->
-        <a-entity id="camera" position="0 0 0" camera="zoom: 1" look-controls rotation="0 90 0" mouse-cursor>
+        <a-entity id="camera" position="0 0 0" camera="zoom: 1" look-controls-enabled="false" rotation="0 90 0" mouse-cursor>
         </a-entity>
+
+        <a-entity  clock="font: sourcecodepro; color: #4149f4; position: -1 1.5 -.75"></a-entity>
 
     </a-scene>
     <script>
+
+
         var deer1 = document.querySelector("#deer1");
         var deer2 = document.querySelector("#deer2");
         var gate = document.querySelector("#gatebtn");
@@ -302,13 +313,10 @@
                 </div>
                 <div class="modal-body">
                     <div id="map">
-                        <img id="myImgMap" src="img/zoo_map.jpg" />
+                        <img id="myImgMap" src="img/thao_cam_vien_map.jpg" />
                         <button class="btn-info" id="lionA">lion</button>
                         <button class="btn-info" id="deerA">deer</button>
                     </div>
-
-
-
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -317,6 +325,15 @@
 
         </div>
     </div>
+    <div class="add_object" style="display: none">
+        <input type="file" class="add_object_input" multiple />
+    </div>
+
+    <script src="/js/jquery-3.3.1.min.js" type="text/javascript"></script>
+    <script src="/js/handleJS.js" type="text/javascript"></script>
+    <script src="/js/bootstrap.js" type="text/javascript"></script>
+   
+  
 </body>
 
 </html>
