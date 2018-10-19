@@ -37,6 +37,7 @@ app.set("views","./src/views");
 app.get("/", (req, res)=>{
     res.render('home');
 });
+
 app.get("/upload_object", (req, res)=>{
     res.render('upload_object');
 });
@@ -100,6 +101,11 @@ app.post('/upload', (req, res) => {
     animalContain.appendChild(animal);
     s.appendChild(animalContain);
 }
+
+app.get("/intro", (req, res)=>{
+    res.render('intro');
+});
+
 //4. export
 module.exports = { app };
 

@@ -1,4 +1,51 @@
+
 $(document).ready(function () {
+
+    function cover_position(x,y, event){
+        let screen_width = screen.width;
+        let screen_height = screen.height;
+        let offsetX = event.offsetX;
+        let offsetY = event.offsetY;
+        let new_x = x  / screen_width * 2 - 1;
+        let new_y = -(y  / screen_height) * 2 + 1
+        return {new_x, new_y};
+    }
+    $("body").on("dblclick",function(event){
+        $(".add_object_input").trigger("click");
+        $(".add_object_input").on("change", function(){
+            let link_of_object = $(".add_object_input").val();
+            console.log(link_of_object);
+        });
+        let scale_position = cover_position(event.clientX, event.clientY, event);
+        console.log(scale_position);
+        AddAnimal($(".add_object_input").val(),"",scale_position.new_x, scale_position.new_y);
+    });
+     
+    function AddAnimal(link, material, positionX, positionY) {
+       var s = document.querySelector("a-scene");
+       var animalContain = document.createElement("a-entity");
+       var animal = document.createElement("a-obj-model");
+           animalContain.setAttribute("position", {
+               x: -3,
+               y: -1,
+               z: -2.5
+           });
+
+           animal.setAttribute("src", link);
+           animal.setAttribute("mtl", material);
+           animal.setAttribute("position", {
+               x: positionX,
+               y: positionY,
+               z: 1
+           });
+           animal.setAttribute("scale", "0.1 0.1 0.1");
+           animal.setAttribute("id", "deer3");
+           animal.setAttribute("checked", "off");
+           animalContain.appendChild(animal);
+           s.appendChild(animalContain);
+       }
+
+
 //show sidebar
     var menu_thumbnail = document.getElementById("thumbnail_image");
     var menuBtn = document.getElementById("b1");
@@ -394,14 +441,14 @@ $(document).ready(function () {
     let x1 = 0;
     let y1 = 0;
 
-    window.addEventListener("keydown", function () {
+    window.addEventListener("keydown", function (event) {
         if (deer1.getAttribute("checked") === "on") {
-            HandleRotate(deer1);
+            HandleRotate(event, deer1);
         } else if (deer2.getAttribute("checked") === "on") {
-            HandleRotate(deer2);
+            HandleRotate(event, deer2);
         }
     }, false);
-    function HandleRotate(myObjectHanle) {
+    function HandleRotate(event, myObjectHanle) {
         let key1 = event.keyCode;
         if (key1 == "75" && myObjectHanle.getAttribute("checked") === "on") {//k down
             y1 = y1 - 0.1;
@@ -467,6 +514,7 @@ $("#deerA").click(function(){
 
 
 //Add new animal
+<<<<<<< HEAD
 $("body").on("dblclick", function(el){
     $("#file-input").trigger("click");
         var xPosition = 0;
@@ -529,6 +577,24 @@ function add_Animal(link_object, object_material) {
 }
 
 
+=======
+// $("body").on("dblclick", function(){
+//     $(".add_object_input").trigger("click");
+//     $(".add_object_input").on("change", function(){
+//         let file_link = $(".add_object_input").val();
+//         console.log(file_link);
+//     });
+// });
+>>>>>>> 742f761450066ec15e4c96e4b7bda65cd749da26
 
+// var planeZ = new THREE.Plane(new THREE.Vector3(0, 0, 1), 0);
+// var mv = new THREE.Vector3(
+//     (event.clientX / window.innerWidth) * 2 - 1,
+//     -(event.clientY / window.innerHeight) * 2 + 1,
+//     0.5 );
+// var raycaster = projector.pickingRay(mv, camera);
+// var pos = raycaster.ray.intersectPlane(planeZ);
+// console.log("x: " + pos.x + ", y: " + pos.y);
+// console.log("babe");
 });
 
