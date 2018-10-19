@@ -12,10 +12,14 @@
     <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <!-- <script src="/js/aframe.min_1.js" type="text/javascript"></script> -->
     <script src="https://aframe.io/releases/0.4.0/aframe.min.js"></script>
- 
+    <script>
+        // TypeScript 2.2 requires 'exports' global variable.
+        var exports = {};
+    </script>
+    <script src="/js/require.js"></script> 
     <script src="/js/drap_drop.js"></script> 
     <script>
-      registerAframeClickDragComponent(window.AFRAME);
+        window.aframeDraggableComponent(window.AFRAME)
     </script> 
     <script src="/js/animal-component.js"></script>
     <script src="/js/aframe-mouse-cursor-component.min.js" type="text/javascript"></script>

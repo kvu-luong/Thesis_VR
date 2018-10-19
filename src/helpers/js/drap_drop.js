@@ -8,7 +8,10 @@ var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = [
 
 exports.default = aframeDraggableComponent;
 
-var _deepEqual = require('deep-equal');
+define(function(require){
+  var _deepEqual = require('deep-equal');
+})
+
 
 var _deepEqual2 = _interopRequireDefault(_deepEqual);
 

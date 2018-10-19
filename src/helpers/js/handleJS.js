@@ -1,26 +1,22 @@
 
 $(document).ready(function () {
 
-    function cover_position(x,y){
+    function cover_position(x,y, event){
         let screen_width = screen.width;
         let screen_height = screen.height;
-        let new_x = (x + screen_width / 2) / screen_width;
-        let new_y = (y + screen_height / 2) / screen_height;
+        let offsetX = event.offsetX;
+        let offsetY = event.offsetY;
+        let new_x = x  / screen_width * 2 - 1;
+        let new_y = -(y  / screen_height) * 2 + 1
         return {new_x, new_y};
     }
-    function clientCoordsTo3DCanvasCoords(clientX, clientY, offsetX, offsetY, clientWidth, clientHeight) {
-        return {
-          x: (clientX - offsetX) / clientWidth * 2 - 1,
-          y: -((clientY - offsetY) / clientHeight) * 2 + 1
-        };
-      }
     $("body").on("dblclick",function(event){
         $(".add_object_input").trigger("click");
         $(".add_object_input").on("change", function(){
             let link_of_object = $(".add_object_input").val();
             console.log(link_of_object);
         });
-        let scale_position = cover_position(event.clientX, event.clientY);
+        let scale_position = cover_position(event.clientX, event.clientY, event);
         console.log(scale_position);
         AddAnimal($(".add_object_input").val(),"",scale_position.new_x, scale_position.new_y);
     });
