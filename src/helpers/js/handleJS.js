@@ -1,50 +1,17 @@
 
 $(document).ready(function () {
 
-    function cover_position(x,y, event){
-        let screen_width = screen.width;
-        let screen_height = screen.height;
-        let offsetX = event.offsetX;
-        let offsetY = event.offsetY;
-        let new_x = x  / screen_width * 2 - 1;
-        let new_y = -(y  / screen_height) * 2 + 1
-        return {new_x, new_y};
-    }
-    $("body").on("dblclick",function(event){
-        $(".add_object_input").trigger("click");
-        $(".add_object_input").on("change", function(){
-            let link_of_object = $(".add_object_input").val();
-            console.log(link_of_object);
-        });
-        let scale_position = cover_position(event.clientX, event.clientY, event);
-        console.log(scale_position);
-        AddAnimal($(".add_object_input").val(),"",scale_position.new_x, scale_position.new_y);
-    });
-     
-    function AddAnimal(link, material, positionX, positionY) {
-       var s = document.querySelector("a-scene");
-       var animalContain = document.createElement("a-entity");
-       var animal = document.createElement("a-obj-model");
-           animalContain.setAttribute("position", {
-               x: -3,
-               y: -1,
-               z: -2.5
-           });
-
-           animal.setAttribute("src", link);
-           animal.setAttribute("mtl", material);
-           animal.setAttribute("position", {
-               x: positionX,
-               y: positionY,
-               z: 1
-           });
-           animal.setAttribute("scale", "0.1 0.1 0.1");
-           animal.setAttribute("id", "deer3");
-           animal.setAttribute("checked", "off");
-           animalContain.appendChild(animal);
-           s.appendChild(animalContain);
-       }
-
+   
+    // $("body").on("dblclick",function(event){
+    //     $(".add_object_input").trigger("click");
+    //     $(".add_object_input").on("change", function(){
+    //         let link_of_object = $(".add_object_input").val();
+    //         console.log(link_of_object);
+    //     });
+    //     let scale_position = cover_position(event.clientX, event.clientY, event);
+    //     console.log(scale_position);
+    //     AddAnimal($(".add_object_input").val(),"",scale_position.new_x, scale_position.new_y);
+    // });
 
 //show sidebar
     var menu_thumbnail = document.getElementById("thumbnail_image");
@@ -82,6 +49,10 @@ $(document).ready(function () {
     var intersection = document.querySelector("#intersectionbtn");
     var first_case = document.querySelector("#first_casebtn");
     var butterfly = document.querySelector("#butterflybtn");
+
+    var lion_image = document.querySelector("#lion_img_display");
+    var deer_image = document.querySelector("#deer_img_display");
+
     thumb_gate.addEventListener("click", function () {
         background.setAttribute("src", "#gate");
 
@@ -91,6 +62,9 @@ $(document).ready(function () {
         step_inside_gate.setAttribute('visible', 'false');
         deer2.setAttribute('visible', 'false');
         deer1.setAttribute('visible', 'false');
+
+        lion_image.setAttribute('visible', 'true');
+        deer_image.setAttribute('visible','true');
     });
     thumb_inside_gate.addEventListener("click", function () {
         background.setAttribute("src", "#inside_gate");
@@ -447,6 +421,7 @@ $(document).ready(function () {
         } else if (deer2.getAttribute("checked") === "on") {
             HandleRotate(event, deer2);
         }
+    
     }, false);
     function HandleRotate(event, myObjectHanle) {
         let key1 = event.keyCode;
@@ -514,18 +489,52 @@ $("#deerA").click(function(){
 
 
 //Add new animal
-<<<<<<< HEAD
+
+// $("body").on("dblclick", function(el){
+//     $("#file-input").trigger("click");
+//         var xPosition = 0;
+//         var yPosition = 0;
+//         var link_object = "";
+//         var object_material = "";
+//         //after select file
+//         $("#file-input").on('change',function(e){
+//             var link_of_object = $("#file-input").val();
+//             if(link_of_object != ""){//prevent empty input
+//                 console.log(link_of_object);
+//                 var files = e.target.files;
+
+//             for(var i=0; i<files.length; i++) {
+//                 var f = files[i];
+                
+//                 if(f.name.split(".")[1] === "obj"){
+//                     link_object = f.name;
+//                 }else if(f.name.split(".")[1] === "mtl"){
+//                     object_material = f.name;
+//                 }    
+//             }
+
+//             $("#file-input").val("");
+//             }
+
+//             xPosition = el.pageX;
+//             yPosition = el.pageY;
+//             var new_position = cover_position(xPosition, yPosition, el);
+
+           
+//             if(new_position.new_x != 0 && new_position.new_y != 0){
+//                 add_Animal(link_object, object_material);
+//             } 
+//         });        
+// });
+
 $("body").on("dblclick", function(el){
     $("#file-input").trigger("click");
-        var xPosition = 0;
-        var yPosition = 0;
         var link_object = "";
         var object_material = "";
         //after select file
         $("#file-input").on('change',function(e){
             var link_of_object = $("#file-input").val();
             if(link_of_object != ""){//prevent empty input
-                console.log(link_of_object);
                 var files = e.target.files;
 
             for(var i=0; i<files.length; i++) {
@@ -540,61 +549,128 @@ $("body").on("dblclick", function(el){
 
             $("#file-input").val("");
             }
-
-            xPosition = el.pageX;
-            yPosition = el.pageY;
-            console.log(xPosition +"-"+ yPosition);
-           
-            if(xPosition != 0 && yPosition != 0){
-                add_Animal(link_object, object_material);
+            let new_position = cover_position(el);
+            if(new_position.new_x != 0 && new_position.new_y != 0){
+                add_Animal(link_object, object_material, new_position.new_x, new_position.new_y);
             } 
         });        
 });
+function cover_position(event){
+    let new_x = ( event.clientX / window.innerWidth ) * 2 - 1;
 
-function add_Animal(link_object, object_material) {
+    let new_y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+    
+    // let new_x = event.pageX / 100;
+    // let new_y = -(event.pageY / 100);
+    console.log(new_x +"-"+ new_y);
+    return {new_x, new_y};
+}
+function add_Animal(link, material, positionX, positionY) {
     var s = document.querySelector("a-scene");
     var animalContain = document.createElement("a-entity");
     var animal = document.createElement("a-obj-model");
-    animalContain.setAttribute('position', {
-        x: -3,
-        y: -1,
-        z: -2.5
-    });
+        animalContain.setAttribute("position", {
+            x: positionX,
+            y: positionY,
+            z: -2.5
+        });
+        // animalContain.setAttribute("scale", {
+        //     x: 0.05,
+        //     y: 0.05,
+        //     z: 0.05
+        // });
 
-    animal.setAttribute("src", "obj/"+link_object);
-    animal.setAttribute("mtl", "obj/"+object_material);
-    animal.setAttribute('position', {
-        x: 2,
-        y: -2,
-        z: 1
-    });
-    animal.setAttribute('scale', "0.1 0.1 0.1");
-    var id = Date.now();
-    animal.setAttribute("id", "object"+id);
-    animal.setAttribute("checked", "off");
-    animalContain.appendChild(animal);
-    s.appendChild(animalContain);
+        animal.setAttribute("src", "obj/"+link);
+        animal.setAttribute("mtl", "obj/"+material);
+        animal.setAttribute("position", {
+            x: positionX,
+            y: positionY,
+            z: 1
+        });
+        animal.setAttribute("scale", "0.1 0.1 0.1");
+        animal.setAttribute("id", "deer3");
+        animal.setAttribute("checked", "off");
+        animalContain.appendChild(animal);
+        s.appendChild(animalContain);
 }
 
-
-=======
-// $("body").on("dblclick", function(){
-//     $(".add_object_input").trigger("click");
-//     $(".add_object_input").on("change", function(){
-//         let file_link = $(".add_object_input").val();
-//         console.log(file_link);
+// function add_Animal(link_object, object_material) {
+//     var s = document.querySelector("a-scene");
+//     var animalContain = document.createElement("a-entity");
+//     var animal = document.createElement("a-obj-model");
+//     animalContain.setAttribute('position', {
+//         x: -3,
+//         y: -1,
+//         z: -2.5
 //     });
-// });
->>>>>>> 742f761450066ec15e4c96e4b7bda65cd749da26
 
-// var planeZ = new THREE.Plane(new THREE.Vector3(0, 0, 1), 0);
-// var mv = new THREE.Vector3(
-//     (event.clientX / window.innerWidth) * 2 - 1,
-//     -(event.clientY / window.innerHeight) * 2 + 1,
-//     0.5 );
-// var raycaster = projector.pickingRay(mv, camera);
-// var pos = raycaster.ray.intersectPlane(planeZ);
-// console.log("x: " + pos.x + ", y: " + pos.y);
-// console.log("babe");
+//     animal.setAttribute("src", "obj/"+link_object);
+//     animal.setAttribute("mtl", "obj/"+object_material);
+//     animal.setAttribute('position', {
+//         x: 2,
+//         y: -2,
+//         z: 1
+//     });
+//     animal.setAttribute('scale', "0.1 0.1 0.1");
+//     var id = Date.now();
+//     animal.setAttribute("id", "object"+id);
+//     animal.setAttribute("checked", "off");
+//     animalContain.appendChild(animal);
+//     s.appendChild(animalContain);
+// }
+// let el = document.getElementsByTagName(body);
+// console.log(el);
+// el.addEventListener('click', function (evt) {
+//     console.log(evt.detail.intersection);
+//   });
+
+
+//remove animal 2D image
+$("#deer_img_display").on("click",function(){
+    var deer_image = document.getElementById("deer_img_display");
+    deer_image.parentNode.removeChild(deer_image);
+    console.log("remove deer image success");
+});
+$("#lion_img_display").on("click",function(){
+    var lion_image = document.getElementById("lion_img_display");
+    lion_image.parentNode.removeChild(lion_image);
+    console.log("remove lion image success");
+});
+
+
+
+//add animal menu
+$("#action_menu").hide();
+$("#add_animal_btn").on("click", function(){
+    $("#action_menu").toggle();       
+});
+
+//play and pause background music
+var play = document.getElementById('music_play');
+var pause = document.getElementById('music_pause');
+var music = document.querySelector('#nhac');
+play.addEventListener('click', function () {
+    music.components.sound.playSound();
+    $("#music_play").css({
+        "z-index": 0,
+        "display": "none"
+    });
+    $("#music_pause").css({
+        "z-index": 1,
+        "display": "unset"
+    });
+    }, false);
+    pause.addEventListener('click', function () {
+        music.components.sound.pauseSound();
+        $("#music_play").css({
+            "z-index": 1,
+            "display": "unset"
+        });
+        $("#music_pause").css({
+            "z-index": 0,
+            "display": "none"
+        });
+    }, false);
+
 });
 

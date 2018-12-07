@@ -1,84 +1,79 @@
-.btn{
-    position:relative;
-    display:block;
-    padding-top: 14px;
-    color:white;
-}
-#b1{
+#b1,#b-minus,#b-plus,#b-left,#b-up,#b-down,#b-right,
+#b-full,#b-initial,#done,#menu{
     z-index: 1;
-    position: absolute;
-    width: 61px;
+    width: 7%;
     height: 32px;
-    margin-left:30px;
-color:white;
-   }
-#b-minus{
-    z-index: 1;
-    position: absolute;
-    margin-left:100px;
+    text-align:center;
     color:white;
 }
-#b-plus{
-    z-index: 1;
+#music_play,#music_pause{
     position: absolute;
-    margin-left:150px;
-    color:white;
+    color: white;
 }
-#b-left{
-    z-index: 1;
+#music_pause{
+    display: none;
+}
+.music_btn {
+    display: inline;
+    margin-right: 40px;
+    margin-left: 10px;
+}
+.control_btn{
+    width:60%;
     position: absolute;
-    margin-left:200px;
-    color:white;
+    left: 22%;
+    padding-top:7px;
+}
+#add_animal_btn{
+    z-index: 1;
+    width: 4%;
+    height: 32px;
+    text-align: center;
+    color: white;
+    position: absolute;
+    top: 4px;
+    background-color: #bf2424b3;;
+    border: 1px solid #bf2424;
+    border-radius: 7px;
+    transition: 0.3s all;
+}
+#add_animal_btn:hover{
+    background-color: #bf2424;;
+}
+.menu_top{
+    position: relative;
+    width: 100%;
+    z-index: 1;
+    height: 40px;
+    background-color: #18151566;
+    display: flex;
+}
+.table-striped > tbody > tr:nth-of-type(2n){
+    background-color: rgba(51, 41, 68, 0.71);
+    color: white;
+}
+.table-striped > tbody > tr:nth-of-type(2n + 1){
+    background-color: rgba(51, 41, 68, 0.71) !important;
+    color: white;
+}
+th{
+    color: white;
+}
+#thumbnail_image{
+    position:absolute;
+    z-index:1;
+    background: #0000001f;
+    width:50%;
+    display:block;
+    margin-top: 8px;
+    visibility: hidden;
+    left: 21%;
+    height:84px;
+    transform:translateY(-300px);
+    opacity:0;
+    transition:1s;
 }
 
-#b-up{
-    z-index: 1;
-    position: absolute;
-    margin-left:250px;
-    color:white;
-}
-#b-down{
-    z-index: 1;
-    position: absolute;
-    margin-left:300px;
-    color:white;
-}
-#b-right{
-    z-index: 1;
-    position: absolute;
-    margin-left:350px;
-    color:white;
-}
-#b-full{
-    z-index: 1;
-    position: absolute;
-    margin-left:400px;
-    color:white;
-}
-#b-initial{
-    z-index:1;
-    position:absolute;
-    margin-left:450px;
-    color:white;
-}
-#done{
-    z-index:1;
-    position:absolute;
-    margin-left:500px;
-    color:white;
-}
-#add{
-    z-index:1;
-    position:absolute;
-    margin-left:550px;
-    color:red;
-}
-#remove{
-    z-index:1;
-    position:absolute;
-    margin-left:600px;
-    color:white;
-}
 .display_select_file{
     z-index:1;
 }
@@ -87,45 +82,16 @@ color:white;
     position:absolute;
     background-color: red;
 }
-#music{
-    z-index:1;
-    position:absolute;
-    margin-left:650px;
-    color:white;
-}
-#music2{
-    z-index:0;
-    position:absolute;
-    margin-left:650px;
-    color:white;
-}
-#menu{
-    z-index:1;
-    position:absolute;
-    margin-left:700px;
-    color:white;
-}
+
+
 .thumbnails{
     position:relative;
 }
 #myImgMap{
     width:100%;
-    height:100%;
+    height:400px;
 }
-#thumbnail_image{
-    position:absolute;
-    z-index:1;
-    background: #0000001f;
-    width:50%;
-    display:block;
-    margin-top: 38px;
-    visibility: hidden;
-    left: 21%;
-    height:84px;
-    transform:translateY(-300px);
-    opacity:0;
-    transition:1s;
-}
+
 a-assets, a-scene audio, a-scene img, a-scene video{
     display:unset;
 }
@@ -145,7 +111,12 @@ button#deerA
     border-radius: 20px;
 }
 button#lionA{
-    transform: translate(428px, -197px);
+    top: 56%;
+    left: 75%;
+}
+button#deerA{
+    top: 34%;
+    left: 32%;
 }
 button#lionA:hover,
 button#deerA:hover
@@ -155,9 +126,7 @@ button#deerA:hover
     border-color: green;
     border-radius: 20px;
 }
-button#deerA{
-    transform: translate(197px, -284px);
-}
+
 .display_select_file{
     display: relative;
 }
@@ -167,3 +136,10 @@ button#deerA{
     height: 100px;
     width: 100px;
 }
+
+
+#action_menu{
+    position: absolute;
+    z-index: 1;
+}
+

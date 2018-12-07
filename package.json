@@ -7,16 +7,13 @@
     "body-parser": "^1.18.3",
     "ejs": "^2.6.1",
     "express": "^4.16.3",
-<<<<<<< HEAD
-    "multer": "^1.4.0"
-=======
+    "multer": "^1.4.0",
     "typescript": "^2.1.6"
->>>>>>> 742f761450066ec15e4c96e4b7bda65cd749da26
   },
   "scripts": {
     "server": "nodemon src/index.js -e js,ejs,css,html",
     "test": "nodemon --exec mocha --recursive",
-    "start": "nodemon  src/index.js"
+    "start": "node  src/index.js"
   },
   "devDependencies": {
     "mocha": "^5.2.0",
