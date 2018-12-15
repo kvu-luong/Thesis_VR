@@ -21,7 +21,6 @@ const app = express();
 app.use(json());
 app.use(express.static(__dirname + '/helpers'));//for import image, js static
 
-
 //---set enviroment for dev
 app.locals.isDev = process.env.NODE_ENV !== "production";
 if(process.env.NODE_ENV !== "production"){
@@ -79,7 +78,7 @@ app.get("/upload_object", (req, res)=>{
 //   });
 
 app.get("/intro", (req, res)=>{
-    res.render('intro');
+    res.render('test');
 });
 
 //4. export

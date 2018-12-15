@@ -1,0 +1,24 @@
+# Blender MTL File: 'l.blend'
+# Material Count: 2
+
+newmtl Ele_Tuskh
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.740392 0.693333 0.564706
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd /home/useful/Documents/Thesis/ELETUSK.JPG
+map_Bump /home/useful/Documents/Thesis/ELETUSK.JPG
+
+newmtl Material_#30__��
+Ns 749.999996
+Ka 1.000000 1.000000 1.000000
+Kd 0.143089 0.143089 0.143089
+Ks 0.018705 0.000000 0.002687
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2

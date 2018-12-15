@@ -9,18 +9,19 @@
     <link href="/css/font-awesome.css" rel="stylesheet" type="text/css" />
     <link href="/css/handle.css" rel="stylesheet" type="text/css" />
     <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <script src="/js/aframe.min_1.js" type="text/javascript"></script>
+    <script src="/js/build.js"></script>
     <!-- <script src="https://aframe.io/releases/0.4.0/aframe.min.js"></script> -->
 
-    <script src="/js/animal-component.js"></script>
-    <script src="/js/aframe-mouse-cursor-component.min.js" type="text/javascript"></script>
-
+    <!-- <script src="/js/animal-component.js"></script> -->
+    <!-- <script src="/js/aframe-mouse-cursor-component.min.js" type="text/javascript"></script> -->
+    <!-- <script src="../helpers/js/aframe-component_event.js"></script> -->
+    <!-- <script src="../../node_modules/aframe-click-drag-component/dist/aframe-click-drag-component.min.js"></script> -->
 
 </head>
 
-<body cursor-listener>
-    <a-scene inspector="url: https://aframe.io/releases/0.3.0/aframe-inspector.min.js">
-
+<body >
+    <a-scene>
+        <a-sphere click-drag position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
         <!--start code button -->
             <div class="container menu_top"> 
                 <button id="add_animal_btn" class="btn-primary"><i class="fa fa-plus-square-o fa-2x" aria-hidden="true"></i></button>
@@ -57,33 +58,33 @@
                     </thead>
                     <tr>
                         <td>Add News</td>
-                        <td><a  id="add_new_2d" class='btn btn-info btn-xs' href="#">ADD</a></td>
-                        <td><a href="#" id="add_new_3d"" class="btn btn-danger btn-xs">ADD</a></td>
+                        <td><a id="add_new_2d" class='btn btn-info btn-xs' href="#">ADD</a></td>
+                        <td><a id="add_new_3d" href="#" class="btn btn-danger btn-xs">ADD</a></td>
                     </tr>
                     <tr>
                         <td>Lion</td>
                         <td><a id="add_lion_2d" class='btn btn-info btn-xs' href="#">ADD</a></td>
-                        <td><a href="#" id="add_lion_3d" class="btn btn-danger btn-xs">ADD</a></td>
+                        <td><a id="add_lion_3d" href="#" class="btn btn-danger btn-xs">ADD</a></td>
                     </tr>
                     <tr>
                         <td>Elephant</td>
-                        <td><a class='btn btn-info btn-xs' href="#">ADD</a></td>
-                        <td><a href="#" class="btn btn-danger btn-xs">ADD</a></td>
+                        <td><a id="add_elephant_2d" class='btn btn-info btn-xs' href="#">ADD</a></td>
+                        <td><a id="add_elephant_3d" href="#" class="btn btn-danger btn-xs">ADD</a></td>
                     </tr>
                     <tr>
                         <td>Deer</td>
-                        <td><a class='btn btn-info btn-xs' href="#">ADD</a></td>
-                        <td><a href="#" class="btn btn-danger btn-xs">ADD</a></td>
+                        <td><a id="add_deer_2d" class='btn btn-info btn-xs' href="#">ADD</a></td>
+                        <td><a id="add_deer_3d" href="#" class="btn btn-danger btn-xs">ADD</a></td>
                     </tr>
                     <tr>
                         <td>Hippo</td>
-                        <td><a class='btn btn-info btn-xs' href="#">ADD</a></td>
-                        <td><a href="#" class="btn btn-danger btn-xs">ADD</a></td>
+                        <td><a id="add_hippo_2d" class='btn btn-info btn-xs' href="#">ADD</a></td>
+                        <td><a id="add_hippo_3d" href="#" class="btn btn-danger btn-xs">ADD</a></td>
                     </tr>
                     <tr>
                         <td>Giraffe</td>
-                        <td><a class='btn btn-info btn-xs' href="#">ADD</a></td>
-                        <td><a href="#" class="btn btn-danger btn-xs">ADD</a></td>
+                        <td><a id="add_giraffe_2d" class='btn btn-info btn-xs' href="#">ADD</a></td>
+                        <td><a id="add_giraffe_3d" href="#" class="btn btn-danger btn-xs">ADD</a></td>
                     </tr>
 
                 </table>
@@ -129,7 +130,7 @@
             <img id="lion_image" src="img/lion_cc.png" />
             <img id="deer_image" src="img/deer_cc.png" />
         </a-assets>
-        <a-sky id="bg" widtd="100%" height="50%" src="#gate"></a-sky>
+        <a-sky id="bg" widtd="100%" height="50%" src="/img/zoo/gate.jpg"></a-sky>
 
         <a-entity id="nhac" sound="src: #entire; autoplay: false; loop:true"></a-entity>
 
@@ -191,10 +192,11 @@
         </a-image>
 
         <!--camera-->
-        <a-entity id="camera" position="0 0 0" camera="zoom: 1" look-controls rotation="0 90 0" mouse-cursor>
-        </a-entity>
+    <a-entity id="camera" position="0 0 3.8">
+        <a-camera look-controls-enabled="false"></a-camera>
+      </a-entity>
 
-        <a-entity clock="font: sourcecodepro; color: #4149f4; position: -1 1.5 -.75"></a-entity>
+        <!-- <a-entity clock="font: sourcecodepro; color: #4149f4; position: -1 1.5 -.75"></a-entity> -->
 
     </a-scene>
     <script>
@@ -352,7 +354,6 @@
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
             </div>
-
         </div>
     </div>
 

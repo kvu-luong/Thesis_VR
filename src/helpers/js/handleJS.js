@@ -1,4 +1,3 @@
-
 $(document).ready(function () {
 
    
@@ -565,66 +564,121 @@ function cover_position(event){
     console.log(new_x +"-"+ new_y);
     return {new_x, new_y};
 }
-function add_Animal(link, material, positionX, positionY) {
+function add_Animal(link, material, position, rotation, id) {
     var s = document.querySelector("a-scene");
     var animalContain = document.createElement("a-entity");
     var animal = document.createElement("a-obj-model");
         animalContain.setAttribute("position", {
-            x: positionX,
-            y: positionY,
-            z: -2.5
+            x: position.x,
+            y: position.y,
+            z: position.z,
         });
-        // animalContain.setAttribute("scale", {
-        //     x: 0.05,
-        //     y: 0.05,
-        //     z: 0.05
-        // });
 
         animal.setAttribute("src", "obj/"+link);
         animal.setAttribute("mtl", "obj/"+material);
         animal.setAttribute("position", {
-            x: positionX,
-            y: positionY,
+            x: position.x,
+            y: position.y,
             z: 1
         });
-        animal.setAttribute("scale", "0.1 0.1 0.1");
-        animal.setAttribute("id", "deer3");
+        animal.setAttribute("rotation", {
+            x: rotation.x,
+            y: rotation.y,
+            z: rotation.z
+        });
+        animal.setAttribute("scale", "0.2 0.2 0.2");
+        animal.setAttribute("id", id);
         animal.setAttribute("checked", "off");
+        animal.appendChild(scale_animal_mouse_action("mouseenter","0.2 0.2 0.2"));
+        animal.appendChild(scale_animal_mouse_action("mouseleave","0.1 0.1 0.1"));
+        animal.appendChild(rotation_animal_mouseleave());
         animalContain.appendChild(animal);
         s.appendChild(animalContain);
 }
 
-// function add_Animal(link_object, object_material) {
-//     var s = document.querySelector("a-scene");
-//     var animalContain = document.createElement("a-entity");
-//     var animal = document.createElement("a-obj-model");
-//     animalContain.setAttribute('position', {
-//         x: -3,
-//         y: -1,
-//         z: -2.5
-//     });
+$("#add_lion_3d").on("click", function(){
+    let obj_link = "lion.obj";
+    let mtl_link = "lion.mtl";
+    let position = {
+        x: -2,
+        y: -0.5,
+        z: -2
+    }
+    let rotation = {
+        x: 0,
+        y: 70,
+        z: 0
+    }
+    let id = "lion"
+    add_Animal(obj_link, mtl_link,position, rotation, id);
+});
+$("#add_deer_3d").on("click", function(){
+    let obj_link = "deer.obj";
+    let mtl_link = "deer.mtl";
+    let position = {
+        x: -2,
+        y: -0.5,
+        z: -2
+    }
+    let rotation = {
+        x: 0,
+        y: 70,
+        z: 0
+    }
+    let id = "deer_no1";
+    add_Animal(obj_link, mtl_link,position, rotation, id);
+});
 
-//     animal.setAttribute("src", "obj/"+link_object);
-//     animal.setAttribute("mtl", "obj/"+object_material);
-//     animal.setAttribute('position', {
-//         x: 2,
-//         y: -2,
-//         z: 1
-//     });
-//     animal.setAttribute('scale', "0.1 0.1 0.1");
-//     var id = Date.now();
-//     animal.setAttribute("id", "object"+id);
-//     animal.setAttribute("checked", "off");
-//     animalContain.appendChild(animal);
-//     s.appendChild(animalContain);
-// }
-// let el = document.getElementsByTagName(body);
-// console.log(el);
-// el.addEventListener('click', function (evt) {
-//     console.log(evt.detail.intersection);
-//   });
+$("#add_elephant_3d").on("click", function(){
+    let obj_link = "elephant.obj";
+    let mtl_link = "elephant.mtl";
+    let position = {
+        x: -2,
+        y: -0.5,
+        z: -2
+    }
+    let rotation = {
+        x: 0,
+        y: 70,
+        z: 0
+    }
+    let id = "elephant_no1";
+    add_Animal(obj_link, mtl_link,position, rotation, id);
+});
 
+$("#add_hippo_3d").on("click", function(){
+    let obj_link = "hippo.obj";
+    let mtl_link = "hippo.mtl";
+    let position = {
+        x: -2,
+        y: -0.5,
+        z: -2
+    }
+    let rotation = {
+        x: 0,
+        y: 70,
+        z: 0
+    }
+    let id = "hippo_no1";
+    add_Animal(obj_link, mtl_link,position, rotation, id);
+});
 
+function scale_animal_mouse_action(mouse_action, value){
+    let animation_tag = document.createElement("a-animation");
+    animation_tag.setAttribute("attribute","scale");
+    animation_tag.setAttribute("begin",mouse_action);
+    animation_tag.setAttribute("to",value);
+    return animation_tag;
+}
+function rotation_animal_mouseleave(){
+    let animation_tag = document.createElement("a-animation");
+    animation_tag.setAttribute("attribute","rotation");
+    animation_tag.setAttribute("begin","click");
+    animation_tag.setAttribute("to","0 360 0");
+    animation_tag.setAttribute("dur",1000);
+    animation_tag.setAttribute("direction","alternate-reverse");
+    return animation_tag;
+}
 //remove animal 2D image
 $("#deer_img_display").on("click",function(){
     var deer_image = document.getElementById("deer_img_display");
