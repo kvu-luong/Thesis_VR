@@ -1,5 +1,10 @@
+body{
+    margin: 0;
+    padding: 0;
+    user-select: none;
+}
 #b1,#b-minus,#b-plus,#b-left,#b-up,#b-down,#b-right,
-#b-full,#b-initial,#done,#menu{
+#b-full,#b-initial,#done,#menu,#a-frame,#drag{
     z-index: 1;
     width: 7%;
     height: 32px;
@@ -143,3 +148,35 @@ button#deerA:hover
     z-index: 1;
 }
 
+#lion_img_display{
+    z-index: 1;
+}
+#deer_img_display{
+    z-index: 1;
+}
+#goto_gate{
+    position: relative;
+    z-index:1;
+}
+#goto_inside{
+    position: relative;
+    z-index: 1;
+}
+#thumbnail_image{
+    cursor: pointer;
+}
+.left_btn{
+    display: flex;
+    flex: 1;
+}
+#drag, #a-frame{
+    display: flex;
+    margin-left: 10%;
+    justify-content: left;
+    align-items: center;
+    color: white;
+    text-transform: uppercase;
+}
+a{
+    color: white !important;
+}

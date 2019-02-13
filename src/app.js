@@ -36,11 +36,17 @@ app.set("views","./src/views");
 app.get("/", (req, res)=>{
     res.render('home');
 });
+app.get("/home", (req, res)=>{
+    res.render('home');
+});
 
 app.get("/upload_object", (req, res)=>{
     res.render('upload_object');
 });
 
+app.get("/drag",(req, res)=>{
+    res.render("drag");
+})
 //route upload object step 5
 // app.post('/upload', (req, res) => {
 //     upload(req, res, (err) => {
@@ -78,7 +84,7 @@ app.get("/upload_object", (req, res)=>{
 //   });
 
 app.get("/intro", (req, res)=>{
-    res.render('test');
+    res.render('intro');
 });
 
 //4. export

@@ -1,0 +1,177 @@
+<html>
+
+<head>
+    <title>Drag and Drop Objects</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/img/background/icon.svg" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+
+    <link href="/css/font-awesome.css" rel="stylesheet" type="text/css" />
+    <link href="/css/handle.css" rel="stylesheet" type="text/css" />
+    <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <script src="/js/build.js"></script>
+    <script src="/js/jquery-3.3.1.min.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+    <a-scene>
+        <!--start code button -->
+        <div class="container menu_top">
+            <div class="left_btn">
+                <button id="add_animal_btn" class="btn-primary"><i class="fa fa-plus-square-o fa-2x" aria-hidden="true"></i></button>
+                <i id="a-frame"><a href="home">Home</a></i>
+            </div>
+            <div class="text-center control_btn"> 
+                <i id="b1" class="fa fa-image fa-2x"></i>
+                <i id="b-plus" class="fa fa-search-plus fa-2x"></i>
+                <i id="b-minus" class="fa fa-search-minus fa-2x"></i>
+                <i id="b-left" class="fa fa-arrow-left fa-2x"></i>
+                <i id="b-up" class="fa fa-arrow-up fa-2x"></i>
+                <i id="b-down" class="fa fa-arrow-down fa-2x"></i>
+                <i id="b-right" class="fa fa-arrow-right fa-2x"></i>
+                <i id="b-full" class="fa fa-arrows-alt fa-2x"></i>
+                <i id="b-initial" class="fa fa-undo fa-2x"></i>
+                <i class="music_btn">
+                    <i id="music_play" class="fa fa-play fa-2x"></i>
+                    <i id="music_pause" class="fa fa-pause fa-2x"></i>
+                </i>
+                <i id="menu" class="fa fa-bars fa-2x" data-toggle="modal" data-target="#myMap"></i>
+            </div>
+        </div>
+        <!-- end code button -->
+
+        <!-- start add animal button -->
+
+        <div id="action_menu">
+            <div class="row col-sm-1 custyle">
+                <table id="animal_list" class="table table-striped custab">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>2D</th>
+                            <th>3D</th>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <td>Add News</td>
+                        <td><a id="add_new_2d" class='btn btn-info btn-xs' href="#">ADD</a></td>
+                        <td><a id="add_new_3d" href="#" class="btn btn-danger btn-xs">ADD</a></td>
+                    </tr>
+                    <tr>
+                        <td>Lion</td>
+                        <td><a id="add_lion_2d" class='btn btn-info btn-xs' href="#">ADD</a></td>
+                        <td><a id="add_lion_3d" href="#" class="btn btn-danger btn-xs">ADD</a></td>
+                    </tr>
+                    <tr>
+                        <td>Elephant</td>
+                        <td><a id="add_elephant_2d" class='btn btn-info btn-xs' href="#">ADD</a></td>
+                        <td><a id="add_elephant_3d" href="#" class="btn btn-danger btn-xs">ADD</a></td>
+                    </tr>
+                    <tr>
+                        <td>Deer</td>
+                        <td><a id="add_deer_2d" class='btn btn-info btn-xs' href="#">ADD</a></td>
+                        <td><a id="add_deer_3d" href="#" class="btn btn-danger btn-xs">ADD</a></td>
+                    </tr>
+                    <tr>
+                        <td>Hippo</td>
+                        <td><a id="add_hippo_2d" class='btn btn-info btn-xs' href="#">ADD</a></td>
+                        <td><a id="add_hippo_3d" href="#" class="btn btn-danger btn-xs">ADD</a></td>
+                    </tr>
+                    <tr>
+                        <td>Giraffe</td>
+                        <td><a id="add_giraffe_2d" class='btn btn-info btn-xs' href="#">ADD</a></td>
+                        <td><a id="add_giraffe_3d" href="#" class="btn btn-danger btn-xs">ADD</a></td>
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+        <!-- end add animal button -->
+        <!--        image thumbnails-->
+        <div class="thumbnails">
+            <div id="thumbnail_image">
+                <img id="thumb-gate" class="img-thumbnail text-center " src="/img/zoo/gate_thumb.jpg" width="16%"
+                    height="100%" alt="street_thumbnail" title="gate">
+                <img id="thumb-inside_gate" class="img-thumbnail text-center " src="/img/zoo/inside_gate_thumb.jpg"
+                    width="16%" height="100%" alt="palor_thumbnail" title="inside gate">
+                <img id="thumb-step_inside_gate" class="img-thumbnail text-center " src="/img/zoo/step_inside_gate_thumb.jpg"
+                    width="16%" height="100%" alt="lounge_thumbnail" title="step inside gate">
+                <img id="thumb-intersection" class="img-thumbnail text-center " src="/img/zoo/intersection_thumb.jpg"
+                    width="16%" height="100%" alt="corridor_thumbnail" title="intersection">
+                <img id="thumb-first_case" class="img-thumbnail text-center " src="/img/zoo/first_case_thumb.jpg" width="16%"
+                    height="100%" alt="street_thumbnail" title="first case">
+                <img id="thumb-butterfly" class="img-thumbnail text-center " src="/img/zoo/butterfly_thumb.jpg" width="16%"
+                    height="100%" alt="street_thumbnail" title="butterfly">
+            </div>
+        </div>
+
+        <!--end image thumbnails-->
+        <a-assets>
+            <img id="gate" src="/img/zoo/gate.jpg" alt="" />
+            <img id="inside_gate" src="/img/zoo/inside_gate.jpg" alt="" />
+            <img id="step_inside_gate" src="/img/zoo/step_inside_gate.jpg" alt="" />
+            <img id="intersection" src="/img/zoo/intersection.jpg" alt="" />
+            <img id="first_case" src="/img/zoo/first_case.jpg" alt="" />
+            <img id="butterfly" src="img/zoo/butterfly.jpg" alt="" />
+            <a-asset-item id="deer11" src="obj/deer.obj"></a-asset-item>
+            <a-asset-item id="deer11-material" src="obj/deer.mtl"></a-asset-item>
+            <a-asset-item id="deer22" src="obj/deer1.obj"></a-asset-item>
+            <a-asset-item id="deer22-material" src="obj/deer1.mtl"></a-asset-item>
+
+            <img id="arrow" src="img/zoo/left.png" alt="">
+
+            <audio id="entire" src="audio/Entire.mp3"></audio>
+
+            <img id="lion_image" src="img/lion_cc.png" />
+            <img id="deer_image" src="img/deer_cc.png" />
+        </a-assets>
+        <a-sky id="bg" widtd="100%" height="50%" src="/img/zoo/gate.jpg"></a-sky>
+
+        <a-entity id="nhac" sound="src: #entire; autoplay: false; loop:true"></a-entity>
+
+        <!--camera-->
+        <a-entity id="camera" position="0 0 3.8">
+            <a-camera look-controls-enabled="true" wasd-controls-enabled="false"></a-camera>
+        </a-entity>
+    </a-scene>
+
+    <!-- Modal map -->
+    <div id="myMap" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">MAP</h4>
+                </div>
+                <div class="modal-body">
+                    <div id="map">
+                        <img id="myImgMap" src="img/thao_cam_vien_map.jpg" />
+                        <button class="btn-info" id="lionA">lion</button>
+                        <button class="btn-info" id="deerA">deer</button>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- display select file input -->
+    <div class="display_select_file">
+        <input id="file-input" type="file" name="name" style="display: none;" multiple />
+    </div>
+
+    <script src="/js/handle_drag.js" type="text/javascript"></script>
+    <script src="/js/bootstrap.js" type="text/javascript"></script>
+
+
+</body>
+
+</html>
+<% if (isDev) { %>
+<script src="reload/reload.js"></script>
+<% } %>

@@ -9,43 +9,72 @@
     <link href="/css/font-awesome.css" rel="stylesheet" type="text/css" />
     <link href="/css/handle.css" rel="stylesheet" type="text/css" />
     <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <script src="/js/build.js"></script>
+
     <!-- <script src="https://aframe.io/releases/0.4.0/aframe.min.js"></script> -->
+    <script src="/js/aframe.min.js"></script>
+    <script src="/js/aframe-mouse-cursor-component.min.js" type="text/javascript"></script>
+    <!-- <script src="/js/build.js"></script> -->
+
+    <script src="/js/jquery-3.3.1.min.js" type="text/javascript"></script>
 
     <!-- <script src="/js/animal-component.js"></script> -->
-    <!-- <script src="/js/aframe-mouse-cursor-component.min.js" type="text/javascript"></script> -->
+
     <!-- <script src="../helpers/js/aframe-component_event.js"></script> -->
     <!-- <script src="../../node_modules/aframe-click-drag-component/dist/aframe-click-drag-component.min.js"></script> -->
 
 </head>
 
-<body >
+<body>
     <a-scene>
-        <a-sphere click-drag position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
+        <a-assets>
+            <img id="gate" src="/img/zoo/gate.jpg" alt="" />
+            <img id="inside_gate" src="/img/zoo/inside_gate.jpg" alt="" />
+            <img id="step_inside_gate" src="/img/zoo/step_inside_gate.jpg" alt="" />
+            <img id="intersection" src="/img/zoo/intersection.jpg" alt="" />
+            <img id="first_case" src="/img/zoo/first_case.jpg" alt="" />
+            <img id="butterfly" src="img/zoo/butterfly.jpg" alt="" />
+
+            <a-asset-item id="deer11" src="obj/deer.obj"></a-asset-item>
+            <a-asset-item id="deer11-material" src="obj/deer.mtl"></a-asset-item>
+            <a-asset-item id="deer22" src="obj/deer1.obj"></a-asset-item>
+            <a-asset-item id="deer22-material" src="obj/deer1.mtl"></a-asset-item>
+
+            <img id="arrow" src="img/zoo/left.png" alt="">
+
+            <audio id="entire" src="audio/Entire.mp3"></audio>
+
+            <img id="lion_image" src="img/lion_cc.png" />
+            <img id="deer_image" src="img/deer_cc.png" />
+        </a-assets>
+        <a-sky id="bg" widtd="100%" height="50%" src="/img/zoo/gate.jpg"></a-sky>
+
         <!--start code button -->
-            <div class="container menu_top"> 
+        <div class="container menu_top">
+            <div class="left_btn">
                 <button id="add_animal_btn" class="btn-primary"><i class="fa fa-plus-square-o fa-2x" aria-hidden="true"></i></button>
-                <div class="text-center control_btn">
-                    <i id="b1" class="fa fa-image fa-2x"></i>
-                    <i id="b-plus" class="fa fa-search-plus fa-2x"></i>
-                    <i id="b-minus" class="fa fa-search-minus fa-2x"></i>
-                    <i id="b-left" class="fa fa-arrow-left fa-2x"></i>
-                    <i id="b-up" class="fa fa-arrow-up fa-2x"></i>
-                    <i id="b-down" class="fa fa-arrow-down fa-2x"></i>
-                    <i id="b-right" class="fa fa-arrow-right fa-2x"></i>
-                    <i id="b-full" class="fa fa-arrows-alt fa-2x"></i>
-                    <i id="b-initial" class="fa fa-undo fa-2x"></i>
-                    <i class="music_btn">
-                        <i id="music_play" class="fa fa-play fa-2x"></i>
-                        <i id="music_pause" class="fa fa-pause fa-2x"></i>
-                    </i>
-                    <i id="menu" class="fa fa-bars fa-2x" data-toggle="modal" data-target="#myMap"></i>
-                </div>
+                <i id="drag"><a href="drag">Drag/Drop</a></i>
             </div>
+            <div class="text-center control_btn">
+                <i id="b1" class="fa fa-image fa-2x"></i>
+                <i id="b-plus" class="fa fa-search-plus fa-2x"></i>
+                <i id="b-minus" class="fa fa-search-minus fa-2x"></i>
+                <i id="b-left" class="fa fa-arrow-left fa-2x"></i>
+                <i id="b-up" class="fa fa-arrow-up fa-2x"></i>
+                <i id="b-down" class="fa fa-arrow-down fa-2x"></i>
+                <i id="b-right" class="fa fa-arrow-right fa-2x"></i>
+                <i id="b-full" class="fa fa-arrows-alt fa-2x"></i>
+                <i id="b-initial" class="fa fa-undo fa-2x"></i>
+                <i class="music_btn">
+                    <i id="music_play" class="fa fa-play fa-2x"></i>
+                    <i id="music_pause" class="fa fa-pause fa-2x"></i>
+                </i>
+                <i id="menu" class="fa fa-bars fa-2x" data-toggle="modal" data-target="#myMap"></i>
+            </div>
+        </div>
         <!-- end code button -->
 
         <!-- start add animal button -->
-       
+
         <div id="action_menu">
             <div class="row col-sm-1 custyle">
                 <table id="animal_list" class="table table-striped custab">
@@ -110,28 +139,8 @@
         </div>
 
         <!--end image thumbnails-->
-        <a-assets>
-            <a-panorama id="gate" src="/img/zoo/gate.jpg" alt=""></a-panorama>
-            <a-panorama id="inside_gate" src="/img/zoo/inside_gate.jpg" alt=""></a-panorama>
-            <a-panorama id="step_inside_gate" src="/img/zoo/step_inside_gate.jpg" alt=""></a-panorama>
-            <a-panorama id="intersection" src="/img/zoo/intersection.jpg" alt=""></a-panorama>
-            <a-panorama id="first_case" src="/img/zoo/first_case.jpg" alt=""></a-panorama>
-            <a-panorama id="butterfly" src="img/zoo/butterfly.jpg" alt=""></a-panorama>
-            <!--            object 1-->
-            <a-asset-item id="deer11" src="obj/deer.obj"></a-asset-item>
-            <a-asset-item id="deer11-material" src="obj/deer.mtl"></a-asset-item>
-            <a-asset-item id="deer22" src="obj/deer1.obj"></a-asset-item>
-            <a-asset-item id="deer22-material" src="obj/deer1.mtl"></a-asset-item>
 
-            <img id="arrow" src="img/zoo/left.png" alt="">
-
-            <audio id="entire" src="audio/Entire.mp3"></audio>
-
-            <img id="lion_image" src="img/lion_cc.png" />
-            <img id="deer_image" src="img/deer_cc.png" />
-        </a-assets>
-        <a-sky id="bg" widtd="100%" height="50%" src="/img/zoo/gate.jpg"></a-sky>
-
+     
         <a-entity id="nhac" sound="src: #entire; autoplay: false; loop:true"></a-entity>
 
         <!--        button to change scene-->
@@ -167,14 +176,14 @@
             <a-mouseleave opacity="0.5"></a-mouseleave>
         </a-image>
 
-        <a-entity click-drag position="-1 -1 -2.5">
+        <a-entity position="-1 -1 -2.5">
             <a-obj-model checked="off" visible="false" id="deer2" src="#deer22" mtl="#deer22-material" scale="0.1 0.1 0.1"
                 rotation=" 0 -28 0">
             </a-obj-model>
         </a-entity>
 
 
-        <a-entity click-drag position="-2 -1 -1">
+        <a-entity position="-2 -1 -1">
             <a-obj-model checked="off" visible="false" id="deer1" src="#deer11" mtl="#deer11-material" scale="0.1 0.1 0.1"
                 rotation=" 0 -40 0">
                 <a-animation attribute="scale" begin="mouseenter" to="0.2 0.2 0.2"></a-animation>
@@ -184,156 +193,23 @@
         </a-entity>
 
         <!-- animal image -->
-        <a-image id="lion_img_display" height="12" width="20" src="#lion_image" position="-4 0 2" rotation="0 60 0"
-            scale="0.1 0.1 0.1" visible="true">
-        </a-image>
-        <a-image id="deer_img_display" height="12" width="56" src="#deer_image" position="-6 0 0" rotation="0 14 0"
-            scale="0.1 0.1 0.1" visible="true">
-        </a-image>
+        <!-- <a-entity>
+            <a-image id="lion_img_display" height="12" width="20" src="#lion_image" position="-4 0 2" rotation="0 60 0"
+                scale="0.1 0.1 0.1" visible="true">
+            </a-image>              
+        </a-entity>
+        <a-entity>
+            <a-image id="deer_img_display" height="12" width="56" src="#deer_image" position="-6 0 0" rotation="0 14 0"
+                scale="0.1 0.1 0.1" visible="true">
+            </a-image>
+        </a-entity> -->
 
         <!--camera-->
-    <a-entity id="camera" position="0 0 3.8">
-        <a-camera look-controls-enabled="false"></a-camera>
-      </a-entity>
-
-        <!-- <a-entity clock="font: sourcecodepro; color: #4149f4; position: -1 1.5 -.75"></a-entity> -->
-
+        <a-entity id="camera" position="0 0 3.8">
+            <a-camera look-controls-enabled="true" wasd-controls-enabled="false" mouse-cursor></a-camera>
+        </a-entity>
     </a-scene>
-    <script>
 
-
-        var deer1 = document.querySelector("#deer1");
-        var deer2 = document.querySelector("#deer2");
-        var gate = document.querySelector("#gatebtn");
-        var inside_gate = document.querySelector("#inside_gatebtn");
-        var step_inside_gate = document.querySelector("#step_inside_gatebtn");
-        var intersection = document.querySelector("#intersectionbtn");
-        var first_case = document.querySelector("#first_casebtn");
-        var butterfly = document.querySelector("#butterflybtn");
-        var background = document.getElementById("bg");//sky tag
-        gate.addEventListener("click", function () {
-            console.log("click gate");
-            background.setAttribute("src", "#gate");
-            this.setAttribute('visible', 'false');
-
-            inside_gate.setAttribute('visible', 'true');
-            inside_gate.setAttribute('position', '-4 -1 -1');
-            inside_gate.setAttribute('rotation', '0 -7 2');
-            step_inside_gate.setAttribute('visible', 'false');
-            deer2.setAttribute('visible', 'false');
-            deer1.setAttribute('visible', 'false');
-
-        });
-        inside_gate.addEventListener("click", function () {
-            console.log("click inside gate");
-            background.setAttribute("src", "#inside_gate");
-            this.setAttribute('visible', 'false');
-
-            gate.setAttribute('visible', 'true');
-            step_inside_gate.setAttribute('visible', 'true');
-            step_inside_gate.setAttribute('position', '-11 0 -6');
-            step_inside_gate.setAttribute('rotation', '180 0 180');
-            intersection.setAttribute('visible', 'false');
-            deer2.setAttribute('visible', 'true');
-            deer1.setAttribute('visible', 'true');
-
-        });
-        step_inside_gate.addEventListener("click", function () {
-            console.log("click step inside gate");
-            background.setAttribute("src", "#step_inside_gate");
-            this.setAttribute('visible', 'false');
-
-            inside_gate.setAttribute('visible', 'true');
-            inside_gate.setAttribute('position', '7 -1 -1');
-            inside_gate.setAttribute('rotation', '0 180 0');
-            intersection.setAttribute('visible', 'true');
-            intersection.setAttribute('position', '-6 0 0');
-            intersection.setAttribute('rotation', '0 14 0');
-
-            gate.setAttribute('visible', 'false');
-            first_case.setAttribute('visible', 'false');
-            deer2.setAttribute('visible', 'false');
-            deer1.setAttribute('visible', 'false');
-
-        });
-        intersection.addEventListener("click", function () {
-            console.log("click intersection");
-            background.setAttribute("src", "#intersection");
-            this.setAttribute('visible', 'false');
-
-            first_case.setAttribute('visible', 'true');
-            first_case.setAttribute('position', '-6 0 8');//update
-            first_case.setAttribute('rotation', '0 190 0');
-            step_inside_gate.setAttribute('visible', 'true');//need new position
-            step_inside_gate.setAttribute('position', '6 -1 -1');
-            step_inside_gate.setAttribute('rotation', '180 0 180');
-
-            butterfly.setAttribute('visible', 'false');
-            inside_gate.setAttribute('visible', 'false');
-            deer2.setAttribute('visible', 'false');
-            deer1.setAttribute('visible', 'false');
-
-        });
-        first_case.addEventListener("click", function () {
-            console.log("click first case");
-            background.setAttribute("src", "#first_case");
-            this.setAttribute('visible', 'false');
-
-            intersection.setAttribute('visible', 'true');//update new position for intersection
-            intersection.setAttribute('position', '0 -1 6');
-            intersection.setAttribute('rotation', '0 100 0');
-            butterfly.setAttribute('visible', 'true');
-
-            step_inside_gate.setAttribute('visible', 'false');
-            deer2.setAttribute('visible', 'false');
-            deer1.setAttribute('visible', 'false');
-
-        });
-        butterfly.addEventListener("click", function () {
-            console.log("click butterfly");
-            background.setAttribute("src", "#butterfly");
-            this.setAttribute('visible', 'false');
-
-            intersection.setAttribute('visible', 'false');
-            deer2.setAttribute('visible', 'false');
-            deer1.setAttribute('visible', 'false');
-
-        });
-
-
-        // //add object
-        // var addBtn = document.getElementById("add");
-        // var s = document.querySelector("a-scene");
-        // var link = "obj/deer1.obj";
-        // var material = "obj/deer1.mtl";
-        // addBtn.addEventListener("click", function () {//declare this way to prevent automatic running without click
-        //     AddAnimal(link, material);
-        // }, false);
-        // var animalContain = document.createElement("a-entity");
-        // var animal = document.createElement("a-obj-model");
-        // function AddAnimal(link, material) {
-
-        //     animalContain.setAttribute("position", {
-        //         x: -3,
-        //         y: -1,
-        //         z: -2.5
-        //     });
-
-        //     animal.setAttribute("src", link);
-        //     animal.setAttribute("mtl", material);
-        //     animal.setAttribute("position", {
-        //         x: 1,
-        //         y: -2,
-        //         z: 1
-        //     });
-        //     animal.setAttribute("scale", "0.1 0.1 0.1");
-        //     animal.setAttribute("id", "deer3");
-        //     animal.setAttribute("checked", "off");
-        //     animalContain.appendChild(animal);
-        //     s.appendChild(animalContain);
-        // }
-
-    </script>
     <!-- Modal map -->
     <div id="myMap" class="modal fade" role="dialog">
         <div class="modal-dialog">
@@ -362,13 +238,8 @@
         <input id="file-input" type="file" name="name" style="display: none;" multiple />
     </div>
 
-    <script src="/js/jquery-3.3.1.min.js" type="text/javascript"></script>
     <script src="/js/handleJS.js" type="text/javascript"></script>
     <script src="/js/bootstrap.js" type="text/javascript"></script>
-
-
-</body>
-
 
 
 </body>
