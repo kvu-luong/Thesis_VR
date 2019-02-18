@@ -51,7 +51,7 @@
         <!--start code button -->
         <div class="container menu_top">
             <div class="left_btn">
-                <button id="add_animal_btn" class="btn-primary"><i class="fa fa-plus-square-o fa-2x" aria-hidden="true"></i></button>
+                <!-- <button id="add_animal_btn" class="btn-primary"><i class="fa fa-plus-square-o fa-2x" aria-hidden="true"></i></button> -->
                 <i id="drag"><a href="drag">Drag/Drop</a></i>
             </div>
             <div class="text-center control_btn">
@@ -75,50 +75,43 @@
 
         <!-- start add animal button -->
 
-        <div id="action_menu">
+        <!-- <div id="action_menu">
             <div class="row col-sm-1 custyle">
                 <table id="animal_list" class="table table-striped custab">
                     <thead>
                         <tr>
                             <th>Name</th>
-                            <th>2D</th>
                             <th>3D</th>
                         </tr>
                     </thead>
                     <tr>
                         <td>Add News</td>
-                        <td><a id="add_new_2d" class='btn btn-info btn-xs' href="#">ADD</a></td>
                         <td><a id="add_new_3d" href="#" class="btn btn-danger btn-xs">ADD</a></td>
                     </tr>
                     <tr>
                         <td>Lion</td>
-                        <td><a id="add_lion_2d" class='btn btn-info btn-xs' href="#">ADD</a></td>
                         <td><a id="add_lion_3d" href="#" class="btn btn-danger btn-xs">ADD</a></td>
                     </tr>
                     <tr>
                         <td>Elephant</td>
-                        <td><a id="add_elephant_2d" class='btn btn-info btn-xs' href="#">ADD</a></td>
                         <td><a id="add_elephant_3d" href="#" class="btn btn-danger btn-xs">ADD</a></td>
                     </tr>
                     <tr>
                         <td>Deer</td>
-                        <td><a id="add_deer_2d" class='btn btn-info btn-xs' href="#">ADD</a></td>
                         <td><a id="add_deer_3d" href="#" class="btn btn-danger btn-xs">ADD</a></td>
                     </tr>
                     <tr>
                         <td>Hippo</td>
-                        <td><a id="add_hippo_2d" class='btn btn-info btn-xs' href="#">ADD</a></td>
                         <td><a id="add_hippo_3d" href="#" class="btn btn-danger btn-xs">ADD</a></td>
                     </tr>
                     <tr>
                         <td>Giraffe</td>
-                        <td><a id="add_giraffe_2d" class='btn btn-info btn-xs' href="#">ADD</a></td>
                         <td><a id="add_giraffe_3d" href="#" class="btn btn-danger btn-xs">ADD</a></td>
                     </tr>
 
                 </table>
             </div>
-        </div>
+        </div> -->
         <!-- end add animal button -->
         <!--        image thumbnails-->
         <div class="thumbnails">
@@ -155,12 +148,12 @@
             <a-mouseenter opacity="1"></a-mouseenter>
             <a-mouseleave opacity="0.5"></a-mouseleave>
         </a-image>
-        <a-image id="step_inside_gatebtn" height="12" width="56" src="#arrow" position="-11 0 -6" rotation="180 0 180"
+        <a-image id="step_inside_gatebtn" height="12" width="56" src="#arrow" position="-9 2 -1" rotation="180 0 180"
             scale="0.1 0.1 0.1" opacity="0.5" visible="false">
             <a-mouseenter opacity="1"></a-mouseenter>
             <a-mouseleave opacity="0.5"></a-mouseleave>
         </a-image>
-        <a-image id="intersectionbtn" height="12" width="56" src="#arrow" position="-6 0 0" rotation="0 14 0" scale="0.1 0.1 0.1"
+        <a-image id="intersectionbtn" height="20" width="56" src="#arrow" position="-11 1 2" rotation="5 22 0" scale="0.1 0.1 0.1"
             opacity="0.5" visible="false">
             <a-mouseenter opacity="1"></a-mouseenter>
             <a-mouseleave opacity="0.5"></a-mouseleave>
@@ -170,7 +163,7 @@
             <a-mouseenter opacity="1"></a-mouseenter>
             <a-mouseleave opacity="0.5"></a-mouseleave>
         </a-image>
-        <a-image id="butterflybtn" height="12" width="56" src="#arrow" position="10 -2 4" rotation="0 200 -10" scale="0.1 0.1 0.1"
+        <a-image id="butterflybtn" height="12" width="56" src="#arrow" position="10 -1 9" rotation="0 200 -10" scale="0.1 0.1 0.1"
             opacity="0.5" visible="false">
             <a-mouseenter opacity="1"></a-mouseenter>
             <a-mouseleave opacity="0.5"></a-mouseleave>
@@ -179,6 +172,9 @@
         <a-entity position="-1 -1 -2.5">
             <a-obj-model checked="off" visible="false" id="deer2" src="#deer22" mtl="#deer22-material" scale="0.1 0.1 0.1"
                 rotation=" 0 -28 0">
+                <a-animation attribute="scale" begin="mouseenter" to="0.2 0.2 0.2"></a-animation>
+                <a-animation attribute="scale" begin="mouseleave" to="0.1 0.1 0.1"></a-animation>
+                <a-animation attribute="rotation" begin="click" to=" 0 360 0" dur="1000" direction="alternate-reverse"></a-animation>
             </a-obj-model>
         </a-entity>
 

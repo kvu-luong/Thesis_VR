@@ -47,6 +47,7 @@ $(document).ready(function () {
         inside_gate.setAttribute('position', '-4 -1 -1');
         inside_gate.setAttribute('rotation', '0 -7 2');
         step_inside_gate.setAttribute('visible', 'false');
+        first_case.setAttribute('visible', 'false');
         deer2.setAttribute('visible', 'false');
         deer1.setAttribute('visible', 'false');
 
@@ -58,7 +59,7 @@ $(document).ready(function () {
         inside_gate.setAttribute('visible', 'false');
         gate.setAttribute('visible', 'true');
         step_inside_gate.setAttribute('visible', 'true');
-        step_inside_gate.setAttribute('position', '-11 0 -6');
+        step_inside_gate.setAttribute('position', '-9 2 -1');
         step_inside_gate.setAttribute('rotation', '180 0 180');
         intersection.setAttribute('visible', 'false');
         deer2.setAttribute('visible', 'true');
@@ -67,7 +68,7 @@ $(document).ready(function () {
     thumb_step_inside_gate.addEventListener("click", function () {
         background.setAttribute("src", "#step_inside_gate");
         inside_gate.setAttribute('visible', 'true');
-        inside_gate.setAttribute('position', '7 -1 -1');
+        inside_gate.setAttribute('position', '6 1 5');
         inside_gate.setAttribute('rotation', '0 180 0');
         intersection.setAttribute('visible', 'true');
         intersection.setAttribute('position', '-6 0 0');
@@ -81,11 +82,12 @@ $(document).ready(function () {
     thumb_intersection.addEventListener("click", function () {
         background.setAttribute("src", "#intersection");
         first_case.setAttribute('visible', 'true');
-        first_case.setAttribute('position', '-6 0 8'); //update
-        first_case.setAttribute('rotation', '0 190 0');
+        first_case.setAttribute('position', '-3 2 10'); //update
+        first_case.setAttribute('rotation', '0 90 0');
         step_inside_gate.setAttribute('visible', 'true'); //need new position
         step_inside_gate.setAttribute('position', '6 -1 -1');
         step_inside_gate.setAttribute('rotation', '180 0 180');
+        intersection.setAttribute('visible', 'false');
 
         butterfly.setAttribute('visible', 'false');
         inside_gate.setAttribute('visible', 'false');
@@ -95,7 +97,7 @@ $(document).ready(function () {
     thumb_first_case.addEventListener("click", function () {
         background.setAttribute("src", "#first_case");
         intersection.setAttribute('visible', 'true'); //update new position for intersection
-        intersection.setAttribute('position', '0 -1 6');
+        intersection.setAttribute('position', '-1 0 11');
         intersection.setAttribute('rotation', '0 100 0');
         butterfly.setAttribute('visible', 'true');
 
@@ -108,6 +110,9 @@ $(document).ready(function () {
         background.setAttribute("src", "#butterfly");
         intersection.setAttribute('visible', 'false');
         inside_gate.setAttribute('visible', 'false');
+        step_inside_gate.setAttribute('visible', 'false');
+        first_case.setAttribute('visible', 'false');
+        butterfly.setAttribute('visible', 'false');
         deer2.setAttribute('visible', 'false');
         deer1.setAttribute('visible', 'false');
     });
@@ -147,7 +152,7 @@ $(document).ready(function () {
 
         gate_home.setAttribute('visible', 'true');
         step_inside_gate_home.setAttribute('visible', 'true');
-        step_inside_gate_home.setAttribute('position', '-11 0 -6');
+        step_inside_gate_home.setAttribute('position', '-9 2 -1');
         step_inside_gate_home.setAttribute('rotation', '180 0 180');
         intersection_home.setAttribute('visible', 'false');
         deer_two.setAttribute('visible', 'true');
@@ -160,11 +165,11 @@ $(document).ready(function () {
         this.setAttribute('visible', 'false');
 
         inside_gate_home.setAttribute('visible', 'true');
-        inside_gate_home.setAttribute('position', '7 -1 -1');
+        inside_gate_home.setAttribute('position', '6 1 5');//change position
         inside_gate_home.setAttribute('rotation', '0 180 0');
         intersection_home.setAttribute('visible', 'true');
-        intersection_home.setAttribute('position', '-6 0 0');
-        intersection_home.setAttribute('rotation', '0 14 0');
+        intersection_home.setAttribute('position', '-11 1 2');
+        intersection_home.setAttribute('rotation', '5 22 0');
 
         gate_home.setAttribute('visible', 'false');
         first_case_home.setAttribute('visible', 'false');
@@ -178,8 +183,8 @@ $(document).ready(function () {
         this.setAttribute('visible', 'false');
 
         first_case_home.setAttribute('visible', 'true');
-        first_case_home.setAttribute('position', '-6 0 8'); //update
-        first_case_home.setAttribute('rotation', '0 190 0');
+        first_case_home.setAttribute('position', '-3 1 10'); //update
+        first_case_home.setAttribute('rotation', '0 90 0');
         step_inside_gate_home.setAttribute('visible', 'true'); //need new position
         step_inside_gate_home.setAttribute('position', '6 -1 -1');
         step_inside_gate_home.setAttribute('rotation', '180 0 180');
@@ -196,7 +201,7 @@ $(document).ready(function () {
         this.setAttribute('visible', 'false');
 
         intersection_home.setAttribute('visible', 'true'); //update new position for intersection
-        intersection_home.setAttribute('position', '0 -1 6');
+        intersection_home.setAttribute('position', '-1 0 11');
         intersection_home.setAttribute('rotation', '0 100 0');
         butterfly_home.setAttribute('visible', 'true');
 
@@ -211,6 +216,7 @@ $(document).ready(function () {
         this.setAttribute('visible', 'false');
 
         intersection_home.setAttribute('visible', 'false');
+        butterfly.setAttribute('visible','false');
         deer_two.setAttribute('visible', 'false');
         deer_one.setAttribute('visible', 'false');
 
@@ -557,12 +563,20 @@ $(document).ready(function () {
     //1. lion
     let de1 = document.getElementById("deer1");
     let de2 = document.getElementById("deer2");
+ 
     $("#lionA").click(function () {
         console.log("change lion image");
         let background = document.getElementById("bg"); //sky tag
         background.setAttribute("src", "img/zoo/lion.jpg");
         de1.setAttribute("visible", "false");
         de2.setAttribute("visible", "false");
+
+        gate_home.setAttribute("visible", "false");
+        inside_gate_home.setAttribute("visible", "false");
+        step_inside_gate_home.setAttribute("visible", "false");
+        intersection_home.setAttribute("visible", "false");
+        first_case_home.setAttribute("visible", "false");
+        butterfly_home.setAttribute("visible","false");
     });
     //2.deer
     $("#deerA").click(function () {
@@ -571,240 +585,16 @@ $(document).ready(function () {
         background.setAttribute("src", "img/zoo/deer.jpg");
         de1.setAttribute("visible", "false");
         de2.setAttribute("visible", "false");
-    });
-
-
-    //Add new animal
-
-    // $("body").on("dblclick", function(el){
-    //     $("#file-input").trigger("click");
-    //         var xPosition = 0;
-    //         var yPosition = 0;
-    //         var link_object = "";
-    //         var object_material = "";
-    //         //after select file
-    //         $("#file-input").on('change',function(e){
-    //             var link_of_object = $("#file-input").val();
-    //             if(link_of_object != ""){//prevent empty input
-    //                 console.log(link_of_object);
-    //                 var files = e.target.files;
-
-    //             for(var i=0; i<files.length; i++) {
-    //                 var f = files[i];
-
-    //                 if(f.name.split(".")[1] === "obj"){
-    //                     link_object = f.name;
-    //                 }else if(f.name.split(".")[1] === "mtl"){
-    //                     object_material = f.name;
-    //                 }    
-    //             }
-
-    //             $("#file-input").val("");
-    //             }
-
-    //             xPosition = el.pageX;
-    //             yPosition = el.pageY;
-    //             var new_position = cover_position(xPosition, yPosition, el);
-
-
-    //             if(new_position.new_x != 0 && new_position.new_y != 0){
-    //                 add_Animal(link_object, object_material);
-    //             } 
-    //         });        
-    // });
-
-    // $("body").on("dblclick", function(el){
-    //     $("#file-input").trigger("click");
-    //         var link_object = "";
-    //         var object_material = "";
-    //         //after select file
-    //         $("#file-input").on('change',function(e){
-    //             var link_of_object = $("#file-input").val();
-    //             if(link_of_object != ""){//prevent empty input
-    //                 var files = e.target.files;
-
-    //             for(var i=0; i<files.length; i++) {
-    //                 var f = files[i];
-
-    //                 if(f.name.split(".")[1] === "obj"){
-    //                     link_object = f.name;
-    //                 }else if(f.name.split(".")[1] === "mtl"){
-    //                     object_material = f.name;
-    //                 }    
-    //             }
-
-    //             $("#file-input").val("");
-    //             }
-    //             let new_position = cover_position(el);
-    //             if(new_position.new_x != 0 && new_position.new_y != 0){
-    //                 add_Animal(link_object, object_material, new_position.new_x, new_position.new_y);
-    //             } 
-    //         });        
-    // });
-    // function cover_position(event){
-    //     let new_x = ( event.clientX / window.innerWidth ) * 2 - 1;
-
-    //     let new_y = - ( event.clientY / window.innerHeight ) * 2 + 1;
-
-    //     // let new_x = event.pageX / 100;
-    //     // let new_y = -(event.pageY / 100);
-    //     console.log(new_x +"-"+ new_y);
-    //     return {new_x, new_y};
-    // }
-    function add_Animal(link, material, position, rotation, id) {
-        var s = document.querySelector("a-scene");
-        var animalContain = document.createElement("a-entity");
-        var animal = document.createElement("a-obj-model");
-        animalContain.setAttribute("position", {
-            x: position.x,
-            y: position.y,
-            z: position.z,
-        });
-
-        animal.setAttribute("src", "obj/" + link);
-        animal.setAttribute("mtl", "obj/" + material);
-        animal.setAttribute("click-drag", "");
-        animal.setAttribute("position", {
-            x: position.x,
-            y: position.y,
-            z: 1
-        });
-        animal.setAttribute("rotation", {
-            x: rotation.x,
-            y: rotation.y,
-            z: rotation.z
-        });
-        animal.setAttribute("scale", "0.2 0.2 0.2");
-        animal.setAttribute("id", id);
-        animal.setAttribute("checked", "off");
-        animal.appendChild(scale_animal_mouse_action("mouseenter", "0.2 0.2 0.2"));
-        animal.appendChild(scale_animal_mouse_action("mouseleave", "0.1 0.1 0.1"));
-        animal.appendChild(rotation_animal_mouseleave());
-        animalContain.appendChild(animal);
-        s.appendChild(animalContain);
-    }
-
-    $("#add_lion_3d").on("click", function () {
-        let obj_link = "lion.obj";
-        let mtl_link = "lion.mtl";
-        let position = {
-            x: -2,
-            y: -0.5,
-            z: -2
-        }
-        let rotation = {
-            x: 0,
-            y: 70,
-            z: 0
-        }
-        let id = "lion"
-        add_Animal(obj_link, mtl_link, position, rotation, id);
-    });
-    $("#add_deer_3d").on("click", function () {
-        let obj_link = "deer.obj";
-        let mtl_link = "deer.mtl";
-        let position = {
-            x: -2,
-            y: -0.5,
-            z: -2
-        }
-        let rotation = {
-            x: 0,
-            y: 70,
-            z: 0
-        }
-        let id = "deer_no1";
-        add_Animal(obj_link, mtl_link, position, rotation, id);
-    });
-
-    $("#add_elephant_3d").on("click", function () {
-        let obj_link = "elephant.obj";
-        let mtl_link = "elephant.mtl";
-        let position = {
-            x: -2,
-            y: -0.5,
-            z: -2
-        }
-        let rotation = {
-            x: 0,
-            y: 70,
-            z: 0
-        }
-        let id = "elephant_no1";
-        add_Animal(obj_link, mtl_link, position, rotation, id);
-    });
-
-    $("#add_hippo_3d").on("click", function () {
-        let obj_link = "hippo.obj";
-        let mtl_link = "hippo.mtl";
-        let position = {
-            x: -2,
-            y: -0.5,
-            z: -2
-        }
-        let rotation = {
-            x: 0,
-            y: 70,
-            z: 0
-        }
-        let id = "hippo_no1";
-        add_Animal(obj_link, mtl_link, position, rotation, id);
-    });
-
-    $("#add_giraffe_3d").on("click", function () {
-        let obj_link = "Giraffe.obj";
-        let mtl_link = "Giraffe.mtl";
-        let position = {
-            x: -2,
-            y: -0.5,
-            z: -2
-        }
-        let rotation = {
-            x: 0,
-            y: 70,
-            z: 0
-        }
-        let id = "giraffe_no1";
-        add_Animal(obj_link, mtl_link, position, rotation, id);
-    });
-
-    function scale_animal_mouse_action(mouse_action, value) {
-        let animation_tag = document.createElement("a-animation");
-        animation_tag.setAttribute("attribute", "scale");
-        animation_tag.setAttribute("begin", mouse_action);
-        animation_tag.setAttribute("to", value);
-        return animation_tag;
-    }
-
-    function rotation_animal_mouseleave() {
-        let animation_tag = document.createElement("a-animation");
-        animation_tag.setAttribute("attribute", "rotation");
-        animation_tag.setAttribute("begin", "click");
-        animation_tag.setAttribute("to", "0 360 0");
-        animation_tag.setAttribute("dur", 1000);
-        animation_tag.setAttribute("direction", "alternate-reverse");
-        return animation_tag;
-    }
-    //remove animal 2D image
-    $("#deer_img_display").on("click", function () {
-        console.log("hello world removing deer");
-        var deer_image = document.getElementById("deer_img_display");
-        deer_image.parentNode.removeChild(deer_image);
-        console.log("remove deer image success");
-    });
-    $("#lion_img_display").on("click", function () {
-        var lion_image = document.getElementById("lion_img_display");
-        lion_image.parentNode.removeChild(lion_image);
-        console.log("remove lion image success");
+        gate_home.setAttribute("visible", "false");
+        inside_gate_home.setAttribute("visible", "false");
+        step_inside_gate_home.setAttribute("visible", "false");
+        intersection_home.setAttribute("visible", "false");
+        first_case_home.setAttribute("visible", "false");
+        butterfly_home.setAttribute("visible","false");
     });
 
 
 
-    //add animal menu
-    $("#action_menu").hide();
-    $("#add_animal_btn").on("click", function () {
-        $("#action_menu").toggle();
-    });
 
     //play and pause background music
     var play = document.getElementById('music_play');

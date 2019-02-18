@@ -385,6 +385,7 @@ $(document).ready(function () {
 
 
     //Add new animal
+
     function add_Animal(link, material, position, rotation, id) {
         var s = document.querySelector("a-scene");
         var animalContain = document.createElement("a-entity");
@@ -417,6 +418,50 @@ $(document).ready(function () {
         animalContain.appendChild(animal);
         s.appendChild(animalContain);
     }
+
+
+    $("#add_new_3d").on("click", function(el){
+        console.log("add new");
+        $("#file-input").trigger("click");
+
+            var link_object = "";
+            var object_material = "";
+            //after select file
+            $("#file-input").on('change',function(e){
+                var link_of_object = $("#file-input").val();
+                let id = "";
+                if(link_of_object != ""){//prevent empty input
+                    console.log(link_of_object);
+                    var files = e.target.files;
+
+                    for(var i=0; i<files.length; i++) {
+                        var f = files[i];
+
+                        if(f.name.split(".")[1] === "obj"){
+                            link_object = f.name;
+                        }else if(f.name.split(".")[1] === "mtl"){
+                            object_material = f.name;
+                        }else{
+                            alert("You should select files: obj or mtl");
+                        }  
+                    }
+                    id = f.name.split(".")[0];
+                    $("#file-input").val("");
+                }
+                let position = {
+                    x: -2,
+                    y: -0.5,
+                    z: -2
+                }
+                let rotation = {
+                    x: 0,
+                    y: 70,
+                    z: 0
+                }
+                console.log(link_object+"-"+object_material+"-"+id);
+                add_Animal(link_object, object_material, position, rotation, id);
+            });        
+    });
 
     $("#add_lion_3d").on("click", function () {
         let obj_link = "lion.obj";
