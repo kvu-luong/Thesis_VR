@@ -595,7 +595,6 @@ $(document).ready(function () {
 
 
 
-
     //play and pause background music
     var play = document.getElementById('music_play');
     var pause = document.getElementById('music_pause');
@@ -622,5 +621,13 @@ $(document).ready(function () {
             "display": "none"
         });
     }, false);
+
+      //paste this code under the head tag or in a separate js file.
+	// Wait for window load
+	$(window).load(function() {
+		// Animate loader off screen
+		$(".se-pre-con").fadeOut("slow");;
+	});
+
 
 });
